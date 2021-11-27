@@ -1,18 +1,198 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title>Dash!</title>
-    <style>
-    html,body {
-    margin:0;
-      padding:0
+
+<head>
+  <title>Dash!</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .sidebar img {
+      width: 70%
+    }
+
+    .sidebar {
+      overflow: auto;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #E8EDF1;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      border-right: 2px solid #9EA1A4
+    }
+
+    .sidebar *:not(.btn) {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    p {
+      font-size: 1.2vw
+    }
+
+    h1 {
+      font-size: 2.6vw
+    }
+
+    h2 {
+      font-size: 2vw
+    }
+
+    .sidebar a:hover {
+      color: #84AFBF;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    .btn {
+      height: 3em;
+      width: 70%;
+      border-radius: 5px;
+      background-color: #9EA1A4;
+      margin-left: 15%;
+      text-align: center;
+      color: white
+    }
+
+    .openbtn {
+      border-radius: 0 5px 5px 0;
+      border: 2px solid #9EA1A4;
+      position: absolute;
+      top: 15%;
+      font-size: 30px;
+      cursor: pointer;
+      background-color: #E8EDF1;
+      color: black;
+      padding: 0.75em 0.3em;
+      margin-left: 0
+    }
+
+    .openbtn:hover {
+      background-color: #B9BDC0;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px 16px 16px 0;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+      .sidebar {
+        padding-top: 15px;
       }
-      * {
-        overflow:hidden;
+
+      .sidebar a {
+        font-size: 18px;
       }
-    </style>
-  </head>
-  <body>
-        <iframe  style="width: 100vw; height: 100vh;" src="https://scratch.mit.edu/projects/604089854/embed" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
-  </body>
+
+      .openbtn {
+        font-size: 20px
+      }
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    * {
+      overflow: hidden;
+    }
+
+    #instructionsThumbnail {
+      height: 80vh;
+      position: absolute;
+      left: calc(250px + 40vh * (853/1150));
+      top: 10vh;
+      right: auto;
+      padding: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe id="player" style="width: 100vw; height: 100vh;" src="https://scratch.mit.edu/projects/604089854/embed"
+    allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+  <img id="instructionsThumbnail" src="./Instructions.png" />
+
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <h1>Dash!</h1>
+    <h2>遊戲玩法</h2>
+    <p>遊戲開始後, 你將會看到上下共兩排的音符, 每當音符到達垂直那一條線的時候, 你需要按下Z或C鍵(或Microbit上的A、B鍵)分別將上下的音符擊破</p>
+    <button id="imgToggleBtn" class="btn" href="#Instructions" onclick="ToggleImg()">顯示教學圖片</button>
+    <h2>遊戲簡介</h2>
+    <p>本遊戲為一個節奏遊戲, 若要取得高分需要較高的反應能力及節奏感。</p>
+    <h2>遊戲製作</h2>
+    <p>本遊戲由沙田培英中學三名中三同學使用Scratch製成, 歌曲採用本校四十週年主題曲。設計、程式碼等全部皆由本校學生製作。</p>
+  </div>
+
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">?</button>
+  </div>
+
+  <script>
+    let b = 0;
+
+    function openNav() {
+      if (b === 0) {
+        document.getElementById("mySidebar").style.width = "250px";
+        // document.getElementById("main").style.marginLeft = "250px";
+        b = 1;
+      } else closeNav()
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("instructionsThumbnail").style.display = "none"
+      document.getElementById("player").style.display = "block"
+      // document.getElementById("main").style.marginLeft = "0";
+      b = 0
+    }
+
+    function ToggleImg() {
+      switch (document.getElementById("instructionsThumbnail").style.display) {
+        case "block":
+          document.getElementById("instructionsThumbnail").style.display = "none"
+          document.getElementById("player").style.display = "block"
+          document.getElementById("imgToggleBtn").innerHTML = "顯示教學圖片"
+          break
+        default:
+        case "none":
+          document.getElementById("instructionsThumbnail").style.display = "block"
+          document.getElementById("player").style.display = "none"
+          document.getElementById("imgToggleBtn").innerHTML = "取消顯示教學圖片"
+          break
+      }
+    }
+
+    function hideImg() {
+      document.getElementById("instructionsThumbnail").style.display = "none"
+      document.getElementById("player").style.display = "block"
+    }
+  </script>
+</body>
+
 </html>
