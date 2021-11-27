@@ -156,7 +156,7 @@
   </style>
 </head>
 
-<body onload="checkMobile()">
+<body onload="init()">
   <iframe id="player" style="width: 100vw; height: 100%;" src="https://scratch.mit.edu/projects/604089854/embed"
     allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
 
@@ -219,7 +219,15 @@
       document.getElementById("player").style.display = "block"
     }
 
-    function checkMobile() {
+    function init() {
+      isMobile()
+      const params = new URLSearchParams(document.location.search);
+      if(params.get("stemhub_tv") === "true") {
+        document.getElementById("player").src = 'https://scratch.mit.edu/projects/607248426/embed'
+      }
+    }
+
+    function isMobile() {
       let check = false;
       (function (a) {
         if (
