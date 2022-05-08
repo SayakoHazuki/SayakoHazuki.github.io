@@ -1,0 +1,285 @@
+#inbox-menu {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+#search-mail {
+  flex: 6;
+  display: flex;
+}
+
+#search-submit {
+  width: 2em;
+  height: 2em;
+  background-color: transparent;
+  border: none;
+}
+
+#search-outline {
+  flex-grow: 1;
+  border-radius: 0.5em;
+  border: 1px black solid;
+  display: flex;
+  padding: 0.3em;
+}
+
+#search-sel-menu {
+  flex: 1;
+  border: 1px transparent solid;
+}
+
+#search-input {
+  flex: 5;
+  border: 1px transparent solid;
+}
+
+#mail-actions {
+  flex: 4;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mail-action-btn {
+  height: 2em;
+  width: 2em;
+  background-color: transparent;
+  border: 1px black solid;
+  border-radius: 0.5em;
+  margin: 0 0.3em;
+}
+
+#mailbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mail-container {
+  border-bottom: 1px black solid;
+  padding: 0.6em 0.3em;
+  display: flex;
+}
+
+.mail-title,
+.mail-author,
+.mail-timestamp,
+.mail-container,
+.mail-title:hover,
+.mail-author:hover,
+.mail-timestamp:hover,
+.mail-container:hover {
+  text-decoration: none;
+}
+.mail-author,
+.mail-timestamp {
+  color: #606c71;
+}
+
+.mail-container:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mail-author {
+  text-align: center;
+  flex: 3;
+}
+
+.mail-title {
+  color: black;
+  text-align: left;
+  flex: 6;
+}
+
+.mail-timestamp {
+  text-align: right;
+  flex: 2;
+}
+
+.mail-container div {
+  padding: 0 0.6em;
+}
+
+/* message page */
+
+#mail-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#mail-page-actions {
+  height: 2em;
+  padding: 0.25em;
+  display: flex;
+  flex-direction: row;
+}
+
+#mail-page-actions a {
+  background-color: transparent;
+  border: none;
+  border-radius: 1em;
+  height: 2em;
+  width: 2em;
+  padding: 0.25em;
+  color: #606c71;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+#mail-page-actions a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#mail-page-actions a i {
+  margin: auto;
+}
+
+#mail-page-header {
+  padding: 0.25em;
+  display: flex;
+  flex-direction: column;
+}
+
+#mail-header-title-flexbox,
+#mail-header-desc-flexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+#mail-header-title {
+  font-size: 1.5em;
+  color: black;
+}
+
+#mail-header-author {
+  flex: 1;
+  text-align: left;
+}
+
+#mail-timestamp {
+  flex: 1;
+  text-align: right;
+}
+
+#mail-full-content {
+  padding: 0.25em;
+  color: black;
+}
+
+#inbox,
+#mail-page-container {
+  flex: 5;
+  margin: 0 2rem;
+}
+
+#sidebar {
+  flex: 1;
+  border-right: 1px black solid;
+  margin: 0 2rem 0 1rem;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-container {
+  width: 100%;
+  margin: 0;
+  padding: 2rem;
+}
+
+#page-contents {
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.sidebar-item {
+  line-height: 2em;
+  border-radius: 0.7em;
+  margin: 0.2rem 0;
+  padding: 0.1rem 0rem 0.1rem 0.4rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item.active-page {
+  color: #159957;
+  font-weight: 700;
+}
+
+.mail-actions {
+  display: flex;
+  align-items: center;
+}
+
+.message-btn {
+  margin: auto 0.2rem;
+  background-color: transparent;
+  border: 1px black solid;
+  border-radius: 0.3em;
+  height: 2em;
+  width: 2em;
+  display: none;
+}
+
+.message-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mail-container:hover .message-btn {
+  display: block;
+}
+
+.message-favourite-btn.fav-disabled {
+  color: #606c71;
+}
+
+.message-favourite-btn.fav-enabled {
+  color: #ffea00;
+}
+
+.message-delete-btn {
+  color: #dd001b;
+}
+
+.loader-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.loader {
+  border: 0.3em solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 0.3em solid #606c71;
+  width: 2em;
+  height: 2em;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

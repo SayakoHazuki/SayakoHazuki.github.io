@@ -1,0 +1,219 @@
+.linkBtn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  transition: none !important;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* From cssbuttons.io by @adamgiebl */
+.cssbuttons-io-button {
+  background: #a370f0;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.no-hover-underline:hover {
+  text-decoration: none !important;
+}
+
+.page-header {
+  display: none;
+}
+
+.footer-banner {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: auto;
+  margin-bottom: 5rem;
+}
+
+.footer-text {
+  width: 100%;
+  text-align: center;
+}
+
+.imgInTxt {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-height: 100%;
+  min-width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 800px), (orientation: portrait) {
+  .showcase-media {
+    width: 90%;
+    margin: 0 5%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1500px) and (orientation: landscape) {
+  .showcase-media {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1500px) and (orientation: landscape) {
+  .showcase-media {
+    width: 800px;
+  }
+}
+
+.remarks {
+  margin-bottom: 10px;
+  color: #444;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.remarks .word-fam {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+.remarks .desc {
+  font-style: italic;
+  font-weight: 400;
+}
+
+div.pad-1rem {
+  display: block;
+  height: 1rem;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+div.pad-1rem + *.no-top-pad {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+a.shortcut {
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(76, 175, 80);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 0.8px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(76, 175, 80);
+  border-left-style: solid;
+  border-left-width: 0.8px;
+  border-right-color: rgb(76, 175, 80);
+  border-right-style: solid;
+  border-right-width: 0.8px;
+  border-top-color: rgb(76, 175, 80);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top-style: solid;
+  border-top-width: 0.8px;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16.5px;
+  line-height: 24.75px;
+  margin-top: 0px;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  text-align: center;
+  text-decoration-color: rgb(0, 0, 0);
+  text-decoration-line: none;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.shortcut-img-container {
+  margin: 0;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+}
+
+.shortcut-img-container > img {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#shortcuts-container {
+  display: flex;
+  padding: 0 3px;
+  flex-direction: row;
+}
+
+#shortcuts-container > * {
+  margin: 0 3px;
+}
+
