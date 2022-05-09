@@ -22,11 +22,186 @@ body {
   justify-items: center;
 }
 
+#login-frame {
+  padding: 5%;
+  border-radius: 0.7rem;
+  max-width: 90%;
+  flex-direction: column-reverse;
+}
+
+#site-banner {
+  padding: 0;
+  margin: 0;
+}
+
+#site-title {
+  margin: 0;
+}
+
+input[type="text"],
+input[type="password"] {
+  margin: 0 0 10px 0;
+}
+
+#login-form-container {
+  margin: auto;
+  width: 100%;
+}
+
+#large-disclaimer {
+  display: none;
+}
+#disclaimer-toggle {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+}
+#small-disclaimer {
+  display: none;
+  width: 100%;
+  text-align: center;
+  font-size: 0.6em;
+}
+
+@media only screen and (min-height: 35em) {
+  #login-frame {
+    max-width: 80%;
+  }
+
+  #small-disclaimer {
+    display: block;
+  }
+  #alt-disclaimer {
+    display: none;
+  }
+  #disclaimer-toggle {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) and (max-height: 80vw) {
+  body {
+    font-size: 14px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) and (max-height: 60vw) {
+  body {
+    font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  #parent-container {
+    padding: 0 8%;
+  }
+
+  #login-frame {
+    padding: 1em 1.3em 1em 2em;
+    border-radius: 0.7rem;
+    width: 100%;
+    height: fit-content;
+    margin-top: auto 0;
+    flex-direction: row;
+  }
+
+  #site-title {
+    margin: 0 0 0.5em 0;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    margin: 1em 0;
+  }
+
+  #login-form-container {
+    margin: auto 1em auto auto;
+  }
+
+  #site-banner {
+    padding: 0em 1em;
+  }
+
+  #large-disclaimer {
+    display: block;
+  }
+  #small-disclaimer {
+    display: none;
+  }
+  #alt-disclaimer {
+    display: none;
+  }
+  #disclaimer-toggle {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+}
+
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  #login-frame {
+    padding: 1em 1.3em 1em 2em;
+    border-radius: 0.7rem;
+    width: 60%;
+    flex-direction: row;
+  }
+
+  #site-title {
+    margin: 0 0 0.5em 0;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    margin: 1em 0;
+  }
+
+  #login-form-container {
+    margin: auto 1em auto auto;
+  }
+
+  #site-banner {
+    padding: 0em 1em;
+  }
+
+  #large-disclaimer {
+    display: block;
+  }
+  #small-disclaimer {
+    display: none;
+  }
+  #alt-disclaimer {
+    display: none;
+  }
+  #disclaimer-toggle {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1024px) and (orientation: landscape) {
+  #login-frame {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 1200px) and (orientation: landscape) {
+  #login-frame {
+    width: 40%;
+  }
+}
+
+#login-frame {
+  display: flex;
+  background-color: white;
+  border: 1px black solid;
+  height: fit-content;
+  margin: auto;
+  box-shadow: 0.1em 0.1em 0.2em black;
+}
+
 input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 0.8em 0.6em;
-  margin: 1em 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -65,24 +240,10 @@ img.avatar {
   border-radius: 50%;
 }
 
-#login-frame {
-  padding: 1em 1.3em 1em 2em;
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  border-radius: 0.7rem;
-  width: 40%;
-  height: fit-content;
-  margin: auto;
-  border: 1px black solid;
-  box-shadow: 0.1em 0.1em 0.2em black;
-}
-
 #login-form-container {
   flex: 3;
   display: flex;
   flex-direction: column;
-  margin: auto 1em auto auto;
 }
 
 #site-banner {
@@ -90,7 +251,6 @@ img.avatar {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 0em 1em;
   justify-content: center;
   justify-items: center;
 }
@@ -98,7 +258,6 @@ img.avatar {
 #site-title {
   text-align: center;
   font-size: 3em;
-  margin: 0 0 0.5em 0;
   color: rgba(0, 0, 0, 0.5);
   text-shadow: 4px 3px 2px darkgreen;
   font-weight: 700;
@@ -115,23 +274,7 @@ img.avatar {
 }
 
 #disclaimer {
-  font-size: 0.8em; 
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+  font-size: 0.8em;
 }
 
 .loader-container {

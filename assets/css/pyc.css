@@ -146,6 +146,31 @@
   flex-direction: row;
 }
 
+#mail-attachments-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.message-attachment {
+  line-height: 1.5em;
+  border: 1px #606c71 solid;
+  border-radius: 1.25em;
+  padding: 0.15em 0.75em;
+  width: fit-content;
+  margin: 0.25em 0.25em;
+  color: black;
+  max-width: 49%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-attachment i {
+  margin: 0 0.3em 0 0;
+}
+
 #mail-header-title {
   font-size: 1.5em;
   color: black;
@@ -179,6 +204,43 @@
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 767px) {
+  #sidebar {
+    display: none;
+  }
+
+  #inbox,
+  #mail-page-container {
+    margin: 0;
+  }
+
+  #inbox {
+    width: 100%;
+  }
+
+  #search-mail {
+    align-items: center;
+    flex: none;
+    flex-grow: 1;
+  }
+
+  #search-outline {
+    flex-direction: column;
+  }
+
+  #mail-actions {
+    flex: none;
+    border-left: 1px solid black;
+    padding: 0;
+    width: fit-content;
+    flex-direction: column;
+  }
+
+  .mail-action-btn {
+    border: none;
+  }
 }
 
 #page-container {
