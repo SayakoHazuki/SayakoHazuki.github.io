@@ -101,3 +101,23 @@ let sidebar_page_item = $(`#sidebar-${subpage}`);
 if (sidebar_page_item.length) {
   sidebar_page_item.addClass("active-page");
 }
+
+fetch(`https://PYCNextAPI.ookai9097oo.repl.co/info`, {
+  method: "GET",
+  mode: "cors",
+  credentials: "omit",
+  headers: {
+    "PYC-PHPSESSID": getCookie("PHPSESSID"),
+    "PYC-TOKEN": getCookie("access_token"),
+  },
+}).then((response) => {
+  if (response.status === 401) return;
+  response.json().then((data) => {
+    data = data[0];
+    console.log(data);
+    $("#welcome-string").text(
+      `Welcome, ${data._class} ${data.name.trim()} (${data.classnumber})`
+    );
+    $("#day-info").text(data.day);
+  });
+});

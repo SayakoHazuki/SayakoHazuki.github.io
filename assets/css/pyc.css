@@ -1,3 +1,38 @@
+#navMain {  
+  height: 100%; 
+}
+
+#navMainTxt {
+  padding: 0;
+  margin: auto 2em;
+  height: fit-content;
+  font-size: larger;
+  font-weight: 500;
+  color: #45b07b;
+  text-shadow: rgb(43, 51, 43) 1px 1px 1px;
+}
+
+#pycnext-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+
+#pycnext-info * {
+  margin: auto unset;
+  padding-right: 2em;
+}
+
+#welcome-string {
+  margin-left: auto;
+}
+
+#navMain {
+  flex: 1;
+}
+
 #inbox-menu {
   display: flex;
   margin-bottom: 1em;

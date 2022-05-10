@@ -101,4 +101,28 @@ class PycClient {
         });
       });
     });
+
+  sendMessage = (recipients, subject, content, savemail) =>
+    new Promise((resolve, reject) => {
+      fetch(`https://PYCNextAPI.ookai9097oo.repl.co/compose`, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        headers: {
+          "PYC-PHPSESSID": getCookie("PHPSESSID"),
+          "PYC-TOKEN": getCookie("access_token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject,
+          recipients,
+          mailbody: content,
+          savemail: savemail,
+        }),
+      }).then((response) => {
+        if (!response.ok) {
+          return;
+        }
+      });
+    });
 }

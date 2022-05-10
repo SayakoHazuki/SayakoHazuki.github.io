@@ -20,7 +20,7 @@ const loadMessages = (pageNum) =>
       var inboxElement = $("#mailbox-container");
       for (const message of JSON.parse(messages)) {
         var mailElement = $(
-          `<a href="/projects/pyc/message?id=${message.id.main}" class='mail-container'></a>`
+          `<a href="/projects/pyc/message/view?id=${message.id.main}" class='mail-container'></a>`
         );
         mailElement.append(`<div class="mail-title">${message.title}</div>`);
         mailElement.append(
