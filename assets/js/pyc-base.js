@@ -52,20 +52,6 @@ checklogin = () =>
     return resolve(true);
   });
 
-window.onload = function () {
-  let subpage_match =
-    /(?:https?:\/\/)?(?:(?:localhost(?::4000)?)|(?:kai9073\.github\.io))(?:\/projects)?\/pyc\/([^/?#]+)/.exec(
-      window.location.href
-    );
-  let subpage = subpage_match[1].toLowerCase();
-  console.log(subpage);
-  subpage = subpage === "home" ? "message" : subpage;
-  let sidebar_page_item = $(`#sidebar-${subpage}`);
-  if (sidebar_page_item.length) {
-    sidebar_page_item.addClass("active-page");
-  }
-};
-
 function updateURLParameter(url, param, paramVal) {
   var TheAnchor = null;
   var newAdditionalURL = "";
@@ -100,4 +86,18 @@ function updateURLParameter(url, param, paramVal) {
 
   var rows_txt = temp + "" + param + "=" + paramVal;
   return baseURL + "?" + newAdditionalURL + rows_txt;
+}
+
+/** */
+
+let subpage_match =
+  /(?:https?:\/\/)?(?:(?:localhost(?::4000)?)|(?:kai9073\.github\.io))(?:\/projects)?\/pyc\/([^/?#]+)/.exec(
+    window.location.href
+  );
+let subpage = subpage_match[1].toLowerCase();
+console.log(subpage);
+subpage = subpage === "home" ? "message" : subpage;
+let sidebar_page_item = $(`#sidebar-${subpage}`);
+if (sidebar_page_item.length) {
+  sidebar_page_item.addClass("active-page");
 }
