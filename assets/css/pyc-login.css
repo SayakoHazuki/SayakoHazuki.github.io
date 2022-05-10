@@ -314,3 +314,28 @@ img.avatar {
     transform: rotate(360deg);
   }
 }
+
+.alert-box {
+  position: fixed;
+  border: 1px crimson solid;
+  border-radius: 1rem;
+  background-color: #e37582;
+  color: black;
+  padding: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.5em;
+  width: fit-content;
+  max-width: 80vw;
+  text-align: center;
+}
+
+@media screen and (orientation: portrait) and (max-width: 720px) {
+  .alert-box {
+    min-width: 60vw;
+  }
+}
+
+#error-msg {
+  color: red;
+}

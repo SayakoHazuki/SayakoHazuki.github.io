@@ -1,8 +1,22 @@
 let pyc;
 
-const loadMessages = () =>
+const loadMessages = (pageNum) =>
   new Promise((resolve, reject) => {
-    pyc.getMessages(0).then((messages) => {
+    let urlParams = new URLSearchParams(window.location.search);
+    let search_by = urlParams.get("search-by");
+    let search_val = urlParams.get("search-val");
+    let sort = urlParams.get("sort");
+    options = {};
+    if (search_by) {
+      options["search-by"] = search_by;
+    }
+    if (search_val) {
+      options["search-val"] = search_val;
+    }
+    if (sort) {
+      options["sort"] = sort;
+    }
+    pyc.getMessages(pageNum, 0, options).then((messages) => {
       var inboxElement = $("#mailbox-container");
       for (const message of JSON.parse(messages)) {
         var mailElement = $(
@@ -12,7 +26,10 @@ const loadMessages = () =>
         mailElement.append(
           `<div class="mail-author">${message.author.name}</div>`
         );
-        mailElement.append(`<div class="mail-timestamp">${message.date}</div>`);
+        let [_date, _year] = message.date.split(",");
+        var timestampElement = $(
+          `<div class="mail-timestamp"><span class="mail-date">${_date}</span><span class="mail-year">, ${_year}</span></div>`
+        );
         var actionButtons = $('<div class="mail-actions"></div>');
         actionButtons.append(
           `<button data-message-id="${message.id.main}" data-action="delete" class="message-btn message-delete-btn"><i class="fa-solid fa-trash"></i></button>`
@@ -24,9 +41,14 @@ const loadMessages = () =>
             message.isImportant ? `fav-enabled` : `fav-disabled`
           }"><i class="fa-solid fa-star"></i></button>`
         );
-        mailElement.append(actionButtons);
+        timestampElement.append(actionButtons);
+        mailElement.append(timestampElement);
         inboxElement.append(mailElement);
       }
+      endOfInboxElement = $(
+        `<div id="end-of-inbox" data-next-page="${Number(pageNum) + 1}"></div>`
+      );
+      inboxElement.append(endOfInboxElement);
       resolve();
     });
   });
@@ -47,13 +69,38 @@ function initMessageActionsBtns() {
 }
 
 async function init() {
-  $("#sidebar-message").addClass("active-page");
   if (checklogin == null || (await checklogin()) === false) {
     window.location.href = "./login";
   }
-  loadMessages().then(function () {
+  loadMessages(0).then(function () {
+    $(".loader-container").each(function () {
+      $(this).remove();
+    });
     initMessageActionsBtns();
   });
 }
 
-window.onload = init();
+window.onload = init;
+
+$(window).on("resize scroll", function () {
+  if ($("#end-of-inbox").length) {
+    if ($("#end-of-inbox").isInViewport()) {
+      let nextPageNum = Number($("#end-of-inbox").attr("data-next-page") ?? "");
+      $("#end-of-inbox").remove();
+      if (!$(".loader-container").length) {
+        console.log($("#end-of-inbox").attr("data-next-page"));
+        if (isNaN(nextPageNum)) return;
+        $("#mailbox-container").append(
+          '<div class="loader-container" data-padding="true"><div class="loader"></div></div>'
+        );
+        console.log(nextPageNum);
+        loadMessages(nextPageNum).then(function () {
+          $(".loader-container").each(function () {
+            $(this).remove();
+          });
+          initMessageActionsBtns();
+        });
+      }
+    }
+  }
+});

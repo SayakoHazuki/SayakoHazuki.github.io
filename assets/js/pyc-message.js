@@ -98,6 +98,7 @@ function getIcon(filename) {
     case "7z":
     case "gz":
       icon = '<i class="fa-solid fa-file-zipper"></i>';
+      break;
     default:
       icon = '<i class="fa-solid fa-file"></i>';
       break;
@@ -124,8 +125,8 @@ function loadMessage() {
       }
       $("#mail-full-content").append(attachments_container);
     }
-    $(".loader").each(function () {
-      $(this).css("display", "none");
+    $(".loader-container").each(function () {
+      $(this).remove();
     });
     $("#mail-full-content").append($(message.html_content));
     $("#mail-header-title").text(message.subject);

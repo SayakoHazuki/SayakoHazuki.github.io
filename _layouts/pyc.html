@@ -55,21 +55,28 @@
     <main id="page-container" role="main">
         <div id="page-contents">
             <div id="sidebar">
-                <div id="sidebar-message" class="sidebar-item">Messages</div>
-                <div id="sidebar-admin" class="sidebar-item">School Administration</div>
-                <div id="sidebar-account" class="sidebar-item">User Account</div>
-                <div id="sidebar-committees" class="sidebar-item">Committees & Societies</div>
-                <div id="sidebar-learning" class="sidebar-item">Learning</div>
-                <div id="sidebar-discussion" class="sidebar-item">Discussion</div>
-                <div id="sidebar-links" class="sidebar-item">Links</div>
-                <div id="sidebar-google"s class="sidebar-item">Google Apps</div>
+                <a href="{{site.url}}/projects/pyc/home" id="sidebar-message" class="sidebar-item">Messages</a>
+                <a href="{{site.url}}/projects/pyc/school-admin" id="sidebar-school-admin" class="sidebar-item">School
+                    Administration</a>
+                <a href="{{site.url}}/projects/pyc/account" id="sidebar-account" class="sidebar-item">User Account</a>
+                <a href="{{site.url}}/projects/pyc/committees-and-societies" id="sidebar-committees-and-societies"
+                    class="sidebar-item">Committees & Societies</a>
+                <a href="{{site.url}}/projects/pyc/learning" id="sidebar-learning" class="sidebar-item">Learning</a>
+                <a href="{{site.url}}/projects/pyc/discussion" id="sidebar-discussion"
+                    class="sidebar-item">Discussion</a>
+                <a href="{{site.url}}/projects/pyc/links" id="sidebar-links" class="sidebar-item">Links</a>
+                <a href="{{site.url}}/projects/pyc/google-apps" id="sidebar-google-apps" class="sidebar-item">Google
+                    Apps</a>
             </div>
-            {{ content }}
+            <div id="content-parent">
+                <script src="/assets/js/pyc-base.js"></script>
+                <script src="/assets/js/pyc-client.js"></script>
+                {{ content }}
+            </div>
         </div>
 
         <footer class="site-footer">
             <div class="footer-text">
-                <h2>Hello world!</h2>
                 <!---                
                 <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{
                         site.github.repository_name }}</a> is maintained by

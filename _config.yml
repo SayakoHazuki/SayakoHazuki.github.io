@@ -25,7 +25,7 @@ email: amf.kano@gmail.com
 #  line in _config.yml. It will appear in your document head meta (for
 #  Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://kai9073" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://kai9073.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Deireina
 github_username:  Kai9073
 theme: jekyll-theme-cayman

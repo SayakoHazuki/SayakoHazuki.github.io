@@ -8,13 +8,6 @@
   display: flex;
 }
 
-#search-submit {
-  width: 2em;
-  height: 2em;
-  background-color: transparent;
-  border: none;
-}
-
 #search-outline {
   flex-grow: 1;
   border-radius: 0.5em;
@@ -24,13 +17,23 @@
 }
 
 #search-sel-menu {
-  flex: 1;
   border: 1px transparent solid;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.4em;
+  margin-right: 0.5em;
+  color: black;
 }
 
 #search-input {
-  flex: 5;
+  flex: 10;
   border: 1px transparent solid;
+}
+
+#search-submit {
+  width: 2em;
+  height: 2em;
+  background-color: transparent;
+  border: none;
 }
 
 #mail-actions {
@@ -45,7 +48,13 @@
   background-color: transparent;
   border: 1px black solid;
   border-radius: 0.5em;
-  margin: 0 0.3em;
+  margin: auto 0.3em;
+}
+
+.primary-btn {
+  border-color: darkblue;
+  background-color: #536dfe;
+  color: white;
 }
 
 #mailbox-container {
@@ -72,6 +81,19 @@
 .mail-author,
 .mail-timestamp {
   color: #606c71;
+}
+
+.mail-timestamp {
+  display: flex;
+  justify-items: right;
+}
+
+.mail-timestamp span.mail-date {
+  margin-left: auto;
+}
+
+.mail-container:hover span.mail-year {
+  display: none;
 }
 
 .mail-container:hover {
@@ -191,10 +213,9 @@
   color: black;
 }
 
-#inbox,
-#mail-page-container {
+#content-parent {
   flex: 5;
-  margin: 0 2rem;
+  margin: 0 2rem 1em 0;
 }
 
 #sidebar {
@@ -211,8 +232,7 @@
     display: none;
   }
 
-  #inbox,
-  #mail-page-container {
+  #parent {
     margin: 0;
   }
 
@@ -259,13 +279,15 @@
   line-height: 2em;
   border-radius: 0.7em;
   margin: 0.2rem 0;
-  padding: 0.1rem 0rem 0.1rem 0.4rem;
+  padding: 0.1rem 0rem 0.1rem 0.8rem;
   cursor: pointer;
   user-select: none;
+  color: #606c71;
 }
 
 .sidebar-item:hover {
   background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 .sidebar-item.active-page {
@@ -285,6 +307,9 @@
   border-radius: 0.3em;
   height: 2em;
   width: 2em;
+}
+
+.mail-actions {
   display: none;
 }
 
@@ -292,7 +317,7 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.mail-container:hover .message-btn {
+.mail-container:hover .mail-actions {
   display: block;
 }
 
@@ -315,6 +340,11 @@
   align-content: center;
   justify-content: center;
   justify-items: center;
+}
+
+.loader-container[data-padding="true"] {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .loader {
@@ -344,4 +374,12 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.alert-box {
+  position: fixed;
+  border: 1px crimson solid;
+  border-radius: 0.1rem;
+  background-color: #e37582;
+  color: black;
 }
