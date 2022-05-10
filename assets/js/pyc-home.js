@@ -78,6 +78,17 @@ async function init() {
     });
     initMessageActionsBtns();
   });
+
+  let urlParams = new URLSearchParams(window.location.search);
+  let search_by = urlParams.get("search-by");
+  let search_val = urlParams.get("search-val");
+  
+  if(search_by) {
+    $("#search-sel-menu").val(search_by).change()
+  }
+  if(search_val) {
+    $("#search-input").val(search_val).change()
+  }
 }
 
 window.onload = init;
