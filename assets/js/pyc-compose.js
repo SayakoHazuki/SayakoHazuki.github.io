@@ -30,6 +30,13 @@ async function init() {
       '<div data-uid="null" class="user-suggestion no-suggestions">Loading suggestions...</div>'
     );
   });
+
+  $("#recipients-input").focus(function () {
+    $("#user-suggestions").addClass("inputactive");
+  });
+  $("#recipients-input").focusout(function () {
+    $("#user-suggestions").removeClass("inputactive");
+  });
   if (checklogin == null || (await checklogin()) === false) {
     window.location.href = "/projects/pyc/login";
   }
@@ -53,11 +60,60 @@ async function init() {
             `<div data-uid="${u.id}" class="user-suggestion">${u.name}</div>`
         );
         $("#user-suggestions").html(suggestions_html);
+        $(".user-suggestion").each(function () {
+          $(this).click(function () {
+            if (getRecipients().includes($(this).attr("data-uid"))) return;
+            let recipientRemover = $(
+              '<div class="recipient-remover">&nbsp;<i class="fa-solid fa-xmark"></i>&nbsp;</div>'
+            );
+            let recipientBox = $(
+              `<div class="recipient-box" data-uid="${$(this).attr(
+                "data-uid"
+              )}">${$(this).text()}&nbsp;</div>`
+            );
+
+            recipientRemover.click(function () {
+              $(this).parent().remove();
+            });
+            recipientBox.append(recipientRemover);
+
+            $("#mail-recipients-flex").prepend(recipientBox);
+            $("#recipients-input").val("");
+          });
+        });
       });
     }, 750);
   });
 
-  $("send-mail-btn").click(function () {});
+  $("#send-mail-btn").click(function () {
+    let mailRecipients = getRecipients();
+    let mailSubject = $("#subject-input").val();
+    let mailBody = tinymce.activeEditor.getContent();
+    let mailSave = $("#save-mail-switch").prop("checked");
+
+    $("#send-mail-btn").html(
+      '<div class="loader-container"><div class="loader"></div></div>'
+    );
+
+    pyc
+      .sendMessage(
+        mailRecipients,
+        mailSubject,
+        mailBody,
+        (+mailSave).toString()
+      )
+      .then(() => {
+        alert("message sent! (ok i know this is ugly, will change soon.)");
+        $(window).off("beforeunload");
+        window.onbeforeunload = function () {};
+        window.location.href = "/projects/pyc/home";
+      });
+  });
 }
+
+getRecipients = () =>
+  $(".recipient-box")
+    .toArray()
+    .map((element) => element.getAttribute("data-uid"));
 
 window.onload = init;

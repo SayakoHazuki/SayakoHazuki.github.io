@@ -121,8 +121,9 @@ class PycClient {
         }),
       }).then((response) => {
         if (!response.ok) {
-          return;
+          reject()
         }
+        resolve()
       });
     });
 

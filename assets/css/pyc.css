@@ -587,6 +587,12 @@ input:checked + .slider:before {
   margin-left: 0.5em;
 }
 
+#mail-recipients-flex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 #user-suggestions {
   position: absolute;
   flex-direction: column;
@@ -603,21 +609,37 @@ input:checked + .slider:before {
   display: none;
 }
 
-#recipients-input:focus + #user-suggestions {
+#user-suggestions.inputactive,
+#user-suggestions:focus,
+#user-suggestions:hover {
   display: flex;
 }
 
 #recipients-relative {
   position: relative;
-  flex-grow: 1;
+  width: 100%;
 }
 
 #recipients-input {
-  width: 100%;
+  flex-grow: 3;
 }
 
 #user-suggestions div:hover {
   background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.recipient-box {
+  white-space: nowrap;
+  background-color: #cce2fa;
+  padding: 0.1em;
+  margin: 0 0.1em;
+  width: fit-content;
+  border-radius: 0.3em;
+}
+
+.recipient-remover {
+  display: inline;
   cursor: pointer;
 }
 

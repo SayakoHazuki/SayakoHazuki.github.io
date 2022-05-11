@@ -10,7 +10,9 @@
     <div class="compose-mail-row" id="recipients-input-container">
         <label for="recipients-input" class="mail-options-label">To:</label>
         <div id="recipients-relative">
-            <input type="text" name="mail-recipients" id="recipients-input" class="mail-options-input">
+            <div id="mail-recipients-flex">
+                <input type="text" name="mail-recipients" id="recipients-input" class="mail-options-input">
+            </div>
             <div id="user-suggestions">
                 <div data-uid="null" class="user-suggestion no-suggestions">Type something to show suggestions...</div>
             </div>
@@ -26,7 +28,7 @@
     <div class="compose-mail-row">
         <div class="switch-container">
             <label class="switch">
-                <input type="checkbox" checked>
+                <input id="save-mail-switch" type="checkbox" checked>
                 <span class="slider round"></span>
             </label>
         </div>
