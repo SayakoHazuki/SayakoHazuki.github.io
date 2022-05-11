@@ -31,7 +31,7 @@ async function init() {
     );
   });
   if (checklogin == null || (await checklogin()) === false) {
-    window.location.href = "./login";
+    window.location.href = "/projects/pyc/login";
   }
 
   let userInputTimer;
