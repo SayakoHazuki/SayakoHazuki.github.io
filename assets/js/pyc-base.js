@@ -42,7 +42,7 @@ function pyc_alert(content) {
 
 checklogin = () =>
   new Promise((resolve, reject) => {
-    if (pyc == null) {
+    if (typeof pyc === 'undefined') {
       if (getCookie("PHPSESSID") != null && getCookie("access_token") != null) {
         pyc = new PycClient();
         return resolve(true);

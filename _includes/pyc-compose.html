@@ -1,0 +1,38 @@
+<script src="https://cdn.tiny.cloud/1/pr3kb9pgokoyu3dmbkiv26c6wvqkhae9qy63xisincgk6tm0/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<script src="/assets/js/pyc-compose.js"></script>
+<div id="compose-mail-container">
+    <div id="compose-mail-header" class="compose-mail-row">
+        <a href="{{site.url}}/projects/pyc/home" id="compose-page-back-to-top"><i
+                class="fa-solid fa-angle-left"></i></a>
+        <div id="header-text">Compose message</div>
+    </div>
+    <div class="compose-mail-row" id="recipients-input-container">
+        <label for="recipients-input" class="mail-options-label">To:</label>
+        <div id="recipients-relative">
+            <input type="text" name="mail-recipients" id="recipients-input" class="mail-options-input">
+            <div id="user-suggestions">
+                <div data-uid="null" class="user-suggestion no-suggestions">Type something to show suggestions...</div>
+            </div>
+        </div>
+    </div>
+    <div class="compose-mail-row">
+        <label for="recipients-subject" class="mail-options-label">Subject:</label>
+        <input type="text" name="mail-subject" id="subject-input" class="mail-options-input">
+    </div>
+    <div id="mail-editor-container">
+        <div id="mail-editor"></div>
+    </div>
+    <div class="compose-mail-row">
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="switch-text">
+            Save message to "Sent mail" inbox
+        </div>
+        <button id="send-mail-btn">Send<i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</div>

@@ -1,19 +1,23 @@
-#navMain {  
-  height: 100%; 
+#navMain {
+  height: 100%;
+  flex-grow: 1;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  padding: 0 1rem;
 }
 
 #navMainTxt {
   padding: 0;
-  margin: auto 2em;
-  height: fit-content;
-  font-size: larger;
+  font-size: 0.5em;
   font-weight: 500;
   color: #45b07b;
   text-shadow: rgb(43, 51, 43) 1px 1px 1px;
+  line-height: 1;
 }
 
 #pycnext-info {
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   align-content: center;
@@ -22,7 +26,8 @@
 
 #pycnext-info * {
   margin: auto unset;
-  padding-right: 2em;
+  padding-right: 1em;
+  font-size: 0.35em;
 }
 
 #welcome-string {
@@ -84,6 +89,29 @@
   border: 1px black solid;
   border-radius: 0.5em;
   margin: auto 0.3em;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  color: #606c71;
+}
+
+.mail-action-btn i {
+  flex-grow: 1;
+  max-width: 1em;
+  height: 1em;
+}
+
+.mail-action-btn:hover {
+  text-decoration: none;
+}
+
+.mail-action-btn:not(.primary-btn):hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.primary-btn:hover {
+  background-color: #4356c1;
 }
 
 .primary-btn {
@@ -417,4 +445,185 @@
   border-radius: 0.1rem;
   background-color: #e37582;
   color: black;
+}
+
+#compose-mail-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  border: 1px #606c71 solid;
+  padding: 0.5em 1.5em;
+}
+
+#compose-page-back-to-top {
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+  color: #606c71;
+}
+
+#compose-page-back-to-top:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#header-text {
+  font-weight: 700;
+  text-align: center;
+  flex-grow: 1;
+  padding-right: 2em;
+}
+
+.compose-mail-row {
+  border-bottom: 1px #606c71 solid;
+  padding: 0.5em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#mail-editor-container {
+  padding: 1em 0;
+}
+
+.mail-options-input {
+  border: 0;
+  flex-grow: 1;
+}
+
+.mail-options-input:focus {
+  outline: none;
+  border: 0;
+}
+
+.mail-options-label {
+  color: black;
+  margin-right: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.8em;
+  width: 1.8em;
+  left: 0.1em;
+  bottom: 0.1em;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(1.5em);
+  -ms-transform: translateX(1.5em);
+  transform: translateX(1.5em);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 1em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch-container {
+  font-size: 70%;
+  margin-right: 0.5em;
+}
+
+.compose-mail-row:last-of-type {
+  border-bottom: 0;
+}
+
+#send-mail-btn {
+  height: 2em;
+  border-radius: 0.7em;
+  background-color: #2196f3;
+  border: 2px #536dfe solid;
+  color: white;
+  padding: 0 0.7em;
+  margin-left: auto;
+}
+
+#send-mail-btn i {
+  margin-left: 0.5em;
+}
+
+#user-suggestions {
+  position: absolute;
+  flex-direction: column;
+  z-index: 2;
+  border-radius: 0 0 1em 1em;
+  border: 2px solid #eee;
+  background-color: white;
+  box-shadow: 1px 1px 8px #ddd;
+  width: 100%;
+  padding: 0.4em;
+  max-height: 20em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+}
+
+#recipients-input:focus + #user-suggestions {
+  display: flex;
+}
+
+#recipients-relative {
+  position: relative;
+  flex-grow: 1;
+}
+
+#recipients-input {
+  width: 100%;
+}
+
+#user-suggestions div:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#version-name {
+  font-size: 0.3em;
+  margin-left: 0.6em;
+  font-style: italic;
+  margin-top: 0.4em;
 }

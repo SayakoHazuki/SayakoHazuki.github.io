@@ -116,7 +116,7 @@ class PycClient {
         body: JSON.stringify({
           subject,
           recipients,
-          mailbody: content,
+        mailbody: content,
           savemail: savemail,
         }),
       }).then((response) => {
@@ -124,5 +124,23 @@ class PycClient {
           return;
         }
       });
+    });
+
+  findUsers = (query) =>
+    new Promise((resolve, reject) => {
+      fetch(`https://PYCNextAPI.ookai9097oo.repl.co/users/find?q=${query}`, {
+        method: "GET",
+        mode: "cors",
+        credentials: "omit",
+        headers: {
+          "PYC-PHPSESSID": getCookie("PHPSESSID"),
+          "PYC-TOKEN": getCookie("access_token"),
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          resolve(data)
+        });
     });
 }
