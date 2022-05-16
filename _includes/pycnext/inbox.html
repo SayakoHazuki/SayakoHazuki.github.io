@@ -7,7 +7,9 @@
             <div class="i-container bold">
                 <i class="fa-solid fa-envelope"></i>
             </div>
-            Mailbox
+            <span class="m-hide">
+                Mailbox
+            </span>
         </div>
         <hr class="inbox-sidebar-divider">
         <a href="{{site.url}}/projects/pycnext/mail/compose" id="compose-btn"
@@ -15,25 +17,33 @@
             <div class="i-container i-margin">
                 <i class="fa-solid fa-pen"></i>
             </div>
-            Compose
+            <span class="m-hide">
+                Compose
+            </span>
         </a>
         <div id="inbox-sidebar-home" class="inbox-sidebar-item inbox-sidebar-nav">
             <div class="i-container i-margin">
                 <i class="fa-solid fa-inbox"></i>
             </div>
-            Inbox
+            <span class="m-hide">
+                Inbox
+            </span>
         </div>
         <div id="inbox-sidebar-important" class="inbox-sidebar-item inbox-sidebar-nav">
             <div class="i-container i-margin">
                 <i class="fa-solid fa-star"></i>
             </div>
-            Important
+            <span class="m-hide">
+                Important
+            </span>
         </div>
         <div id="inbox-sidebar-sent" class="inbox-sidebar-item inbox-sidebar-nav">
             <div class="i-container i-margin">
                 <i class="fa-solid fa-envelope-circle-check"></i>
             </div>
-            Sent
+            <span class="m-hide">
+                Sent
+            </span>
         </div>
     </div>
 
@@ -57,6 +67,17 @@
                 <div class="loader-container" data-padding="true">
                     <div class="loader"></div>
                 </div>
+
+                <!---
+                    <a href="/projects/pycnext/mail/view?id=${message.id.main}" class='mail-row flex m-flex-col'>
+                        <input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}">
+                        <div class="mail-list-sender overflow-ellipsis">${message.author.name}</div>
+                        <div class="mail-list-subject overflow-ellipsis">${message.title}</div>
+                        <div class="right-text mail-list-timestamp overflow-ellipsis"><span class="mail-date">${_date}</span><span class="mail-year">, ${_year}</span></div>
+                    </a>
+
+                    <div id="end-of-inbox" data-next-page="${Number(pageNum) + 1}"></div>
+                --->
             </div>
         </div>
 

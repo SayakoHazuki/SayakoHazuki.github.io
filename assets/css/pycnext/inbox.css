@@ -41,6 +41,43 @@
   background-color: var(--bg-secondary-color);
 }
 
+@media screen and (max-width: 748px) {
+  #inbox-sidebar {
+    flex: 0 0 fit-content;
+  }
+
+  #inbox-sidebar-header {
+    padding: 0;
+    justify-content: center;
+  }
+
+  #compose-btn {
+    width: 2em;
+    height: 2em;
+    border-radius: 0.5em;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .inbox-sidebar-item {
+    margin: 0;
+  }
+
+  .inbox-sidebar-divider {
+    margin: 0 10px;
+  }
+
+  .inbox-sidebar-nav {
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  #inbox-sidebar > * {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+  }
+}
+
 /* main */
 
 #inbox-workspace-container {
@@ -86,6 +123,39 @@
 
 #end-of-inbox {
   height: 1em;
+}
+
+@media screen and (max-width: 748px) {
+  #inbox-workspace-container {
+    min-width: 0;
+  }
+
+  #inbox-mail-list-container {
+    padding: 1em;
+  }
+
+  .mail-row {
+    line-height: 2;
+  }
+
+  .mail-checkbox {
+    display: none;
+  }
+
+  .mail-list-subject {
+    order: 1;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+  }
+
+  .mail-list-sender {
+    order: 2;
+  }
+
+  .mail-list-timestamp {
+    order: 3;
+  }
 }
 
 /* view mail */

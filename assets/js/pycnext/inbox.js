@@ -18,7 +18,7 @@ const loadMessages = (pageNum) =>
       var inboxElement = $("#inbox-mail-list");
       for (const message of JSON.parse(messages)) {
         var mailElement = $(
-          `<a href="/projects/pycnext/mail/view?id=${message.id.main}" class='mail-row flex'></a>`
+          `<a href="/projects/pycnext/mail/view?id=${message.id.main}" class='mail-row flex m-flex-col'></a>`
         );
         mailElement.append(
           `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}">`
