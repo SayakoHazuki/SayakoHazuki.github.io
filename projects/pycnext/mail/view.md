@@ -2,4 +2,4 @@
 title: View Message
 layout: pyc
 ---
-{% include pyc-message.html %}
+{% include pycnext/mail.html %}

@@ -2,11 +2,9 @@ let pyc;
 window.onload = init();
 
 async function init() {
+  await checklogin()
   $("#sidebar-message").addClass("active-page");
-  if (checklogin == null || (await checklogin()) === false) {
-    window.location.href = "./login";
-  }
-  loadMessage();
+  loadMessage()
 }
 
 function getIcon(filename) {

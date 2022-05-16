@@ -38,7 +38,7 @@ async function init() {
     $("#user-suggestions").removeClass("inputactive");
   });
   if (checklogin == null || (await checklogin()) === false) {
-    window.location.href = "/projects/pyc/login";
+    window.location.href = "/projects/pycnext/login";
   }
 
   let userInputTimer;
@@ -106,7 +106,7 @@ async function init() {
         alert("message sent! (ok i know this is ugly, will change soon.)");
         $(window).off("beforeunload");
         window.onbeforeunload = function () {};
-        window.location.href = "/projects/pyc/home";
+        window.location.href = "/projects/pycnext/home";
       });
   });
 }

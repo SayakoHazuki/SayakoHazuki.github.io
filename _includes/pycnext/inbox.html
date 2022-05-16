@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/assets/css/pycnext/inbox.css">
+<script src="/assets/js/pycnext/inbox.js"></script>
+
+<div id="inbox-parent" class="flex">
+    <div id="inbox-sidebar" class="flex flex-col">
+        <div id="inbox-sidebar-header" class="inbox-sidebar-item">
+            <div class="i-container bold">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            Mailbox
+        </div>
+        <hr class="inbox-sidebar-divider">
+        <a href="{{site.url}}/projects/pycnext/mail/compose" id="compose-btn"
+            class="inbox-sidebar-item highlight-btn flex align-ctr just-ctr">
+            <div class="i-container i-margin">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+            Compose
+        </a>
+        <div id="inbox-sidebar-home" class="inbox-sidebar-item inbox-sidebar-nav">
+            <div class="i-container i-margin">
+                <i class="fa-solid fa-inbox"></i>
+            </div>
+            Inbox
+        </div>
+        <div id="inbox-sidebar-important" class="inbox-sidebar-item inbox-sidebar-nav">
+            <div class="i-container i-margin">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            Important
+        </div>
+        <div id="inbox-sidebar-sent" class="inbox-sidebar-item inbox-sidebar-nav">
+            <div class="i-container i-margin">
+                <i class="fa-solid fa-envelope-circle-check"></i>
+            </div>
+            Sent
+        </div>
+    </div>
+
+    <div id="inbox-workspace-container" class="flex flex-col">
+        <div id="search-bar" class="flex">
+            <select name="search-by" id="search-options" class="pycnext-select">
+                <option value="sender">Author</option>
+                <option selected="selected" value="subj">Subject</option>
+                <option value="content">Content</option>
+                <option value="att">File name</option>
+            </select>
+            <div class="vl"></div>
+            <div id="search-input-container" class="flex">
+                <input placeholder="Search..." type="text" name="search-value" id="search-input">
+            </div>
+        </div>
+        <hr class="divider">
+
+        <div id="inbox-mail-list-container">
+            <div id="inbox-mail-list" class="flex flex-col">
+                <div class="loader-container" data-padding="true">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

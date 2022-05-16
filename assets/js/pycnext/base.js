@@ -42,12 +42,15 @@ function pyc_alert(content) {
 
 checklogin = () =>
   new Promise((resolve, reject) => {
-    if (typeof pyc === 'undefined') {
+    if (typeof pyc === "undefined") {
       if (getCookie("PHPSESSID") != null && getCookie("access_token") != null) {
         pyc = new PycClient();
         return resolve(true);
       }
-      return resolve(false);
+
+      window.location.href = `/projects/pycnext/login?redirect_to=${encodeURIComponent(
+        window.location.href.split("projects/pycnext/")[1]
+      )}`;
     }
     return resolve(true);
   });
@@ -91,13 +94,12 @@ function updateURLParameter(url, param, paramVal) {
 /** */
 
 let subpage_match =
-  /(?:https?:\/\/)?(?:(?:localhost(?::4000)?)|(?:kai9073\.github\.io))(?:\/projects)?\/pyc\/([^/?#]+)/.exec(
+  /(?:https?:\/\/)?(?:(?:localhost(?::4000)?)|(?:kai9073\.github\.io))(?:\/projects)?\/pycnext\/([^/?#]+)/.exec(
     window.location.href
   );
 let subpage = subpage_match[1].toLowerCase();
 console.log(subpage);
-subpage = subpage === "home" ? "message" : subpage;
-let sidebar_page_item = $(`#sidebar-${subpage}`);
+let sidebar_page_item = $(`#site-nav-${subpage}`);
 if (sidebar_page_item.length) {
   sidebar_page_item.addClass("active-page");
 }

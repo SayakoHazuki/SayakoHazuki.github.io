@@ -16,7 +16,9 @@ function login() {
     .login()
     .then(
       () => {
-        window.location.href = "./home";
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectURL = urlParams.get("redirect_to");
+        window.location.href = `/projects/pycnext/${redirectURL}` || "/projects/pycnext/mail/mailbox";
       },
       (reject_reason) => {
         $("#login-btn").text("Login");
