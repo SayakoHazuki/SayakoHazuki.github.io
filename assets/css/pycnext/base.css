@@ -172,6 +172,7 @@ hr.divider {
 
 #contents-container {
   flex-grow: 1;
+  overflow-y: hidden;
 }
 
 /* tables */
