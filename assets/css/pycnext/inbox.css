@@ -6,10 +6,21 @@
 /* sidebar */
 
 #inbox-sidebar {
-  flex: 0 0 300px;
   border-right: var(--bg-secondary-color) 1px solid;
   height: 100%;
   overflow-y: auto;
+}
+
+@media screen and (min-width: 749px) {
+  #inbox-sidebar {
+    flex: 0 0 200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #inbox-sidebar {
+    flex: 0 0 300px;
+  }
 }
 
 #inbox-sidebar-header {
@@ -84,11 +95,31 @@
   margin: 0;
   padding: 0;
   flex-grow: 1;
+  min-width: 0;
 }
 
 #search-bar {
   margin: 0.5em 0;
   width: 100%;
+}
+
+#search-options {
+  flex: 0 2 20%;
+  min-width: 0;
+}
+
+#search-input-container {
+  flex: 0 1 80%;
+  min-width: 0;
+}
+
+#search-input {
+  flex: 0 1 100%;
+  min-width: 0;
+}
+
+#search-bar .vl {
+  flex-shrink: 1;
 }
 
 #inbox-mail-list-container {
@@ -99,12 +130,19 @@
 }
 
 #inbox-mail-list {
-  width: 100%;
+  flex: 0 1 100%;
 }
 
 .mail-row {
   border-bottom: var(--bg-secondary-color) 1px solid;
   line-height: 3.5;
+}
+
+.mail-row:hover,
+.mail-row *:hover {
+  text-decoration: none;
+  background-color: var(--bg-secondary-color);
+  color: black;
 }
 
 .mail-checkbox {
@@ -118,7 +156,7 @@
 
 .mail-list-subject {
   flex: 8;
-  margin-left: 2em;
+  margin: 0 1.5em;
 }
 
 #end-of-inbox {
@@ -155,6 +193,12 @@
 
   .mail-list-timestamp {
     order: 3;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .mail-year {
+    display: none;
   }
 }
 

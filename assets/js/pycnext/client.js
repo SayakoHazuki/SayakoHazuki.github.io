@@ -43,7 +43,9 @@ class PycClient {
       }
       console.log(options, optionsString);
       fetch(
-        `https://PYCNextAPI.ookai9097oo.repl.co/messages/${page}${optionsString}`,
+        `https://PYCNextAPI.ookai9097oo.repl.co/${
+          options.sent ? "sent_messages" : "messages"
+        }/${page}${optionsString}`,
         {
           method: "GET",
           mode: "cors",
@@ -116,14 +118,14 @@ class PycClient {
         body: JSON.stringify({
           subject,
           recipients,
-        mailbody: content,
+          mailbody: content,
           savemail: savemail,
         }),
       }).then((response) => {
         if (!response.ok) {
-          reject()
+          reject();
         }
-        resolve()
+        resolve();
       });
     });
 
@@ -141,7 +143,7 @@ class PycClient {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          resolve(data)
+          resolve(data);
         });
     });
 }

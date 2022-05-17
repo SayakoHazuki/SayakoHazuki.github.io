@@ -4,6 +4,11 @@ const loadMessages = (pageNum) =>
     let search_by = urlParams.get("search-by");
     let search_val = urlParams.get("search-val");
     let sort = urlParams.get("sort");
+
+    if ($(location).prop("hash").substr(1).toLowerCase() === "important") {
+      search_by = "useful";
+    }
+
     options = {};
     if (search_by) {
       options["search-by"] = search_by;
@@ -14,39 +19,50 @@ const loadMessages = (pageNum) =>
     if (sort) {
       options["sort"] = sort;
     }
+    options.sent = $(location).prop("hash").substr(1).toLowerCase() === "sent";
+
     pyc.getMessages(pageNum, 0, options).then((messages) => {
       var inboxElement = $("#inbox-mail-list");
       for (const message of JSON.parse(messages)) {
         var mailElement = $(
-          `<a href="/projects/pycnext/mail/view?id=${message.id.main}" class='mail-row flex m-flex-col'></a>`
+          `<a href="/projects/pycnext/mail/view?id=${message.id.main}${
+            options.sent ? "&ack=show" : ""
+          }" class='mail-row flex m-flex-col'></a>`
         );
         mailElement.append(
           `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}">`
         );
-        mailElement.append(
-          `<div class="mail-list-sender overflow-ellipsis">${message.author.name}</div>`
-        );
+        if (!options.sent) {
+          mailElement.append(
+            `<div class="mail-list-sender overflow-ellipsis">${message.author.name}</div>`
+          );
+        }
         mailElement.append(
           `<div class="mail-list-subject overflow-ellipsis">${message.title}</div>`
         );
+        if (options.sent) {
+          mailElement.append(
+            `<div class="mail-list-sender overflow-ellipsis">${message.acknowledged} / ${message.totalRecipients}</div>`
+          );
+        }
         let [_date, _year] = message.date.split(",");
         var timestampElement = $(
           `<div class="right-text mail-list-timestamp overflow-ellipsis"><span class="mail-date">${_date}</span><span class="mail-year">, ${_year}</span></div>`
         );
         /*
-        var actionButtons = $('<div class="mail-actions"></div>');
-        actionButtons.append(
-          `<button data-message-id="${message.id.main}" data-action="delete" class="message-btn message-delete-btn"><i class="fa-solid fa-trash"></i></button>`
-        );
-        actionButtons.append(
-          `<button data-message-id="${
-            message.id.main
-          }" data-action="favourite" class="message-btn message-favourite-btn ${
-            message.isImportant ? `fav-enabled` : `fav-disabled`
-          }"><i class="fa-solid fa-star"></i></button>`
-        );
-        timestampElement.append(actionButtons);
-        */
+          var actionButtons = $('<div class="mail-actions"></div>');
+          actionButtons.append(
+            `<button data-message-id="${message.id.main}" data-action="delete" class="message-btn message-delete-btn"><i class="fa-solid fa-trash"></i></button>`
+          );
+          actionButtons.append(
+            `<button data-message-id="${
+              message.id.main
+            }" data-action="favourite" class="message-btn message-favourite-btn ${
+              message.isImportant ? `fav-enabled` : `fav-disabled`
+            }"><i class="fa-solid fa-star"></i></button>`
+          );
+          timestampElement.append(actionButtons);
+          */
 
         mailElement.append(timestampElement);
         inboxElement.append(mailElement);
@@ -75,7 +91,6 @@ function initMessageActionsBtns() {
 }
 
 function loadNextPage() {
-  console.log("");
   if ($("#end-of-inbox").length) {
     if ($("#end-of-inbox").isInViewport()) {
       let nextPageNum = Number($("#end-of-inbox").attr("data-next-page") ?? "");
@@ -99,7 +114,50 @@ function loadNextPage() {
 }
 
 async function init() {
-  await checklogin()
+  await checklogin();
+
+  $("#inbox-sidebar-important").click(function (e) {
+    e.preventDefault();
+    window.location.hash = "#important";
+    location.reload();
+  });
+  $("#inbox-sidebar-sent").click(function (e) {
+    e.preventDefault();
+    window.location.hash = "#sent";
+    location.reload();
+  });
+  $("#inbox-sidebar-home").click(function (e) {
+    e.preventDefault();
+    window.location.hash = "#";
+    location.reload();
+  });
+
+  let urlParams = new URLSearchParams(window.location.search);
+  let search_by = urlParams.get("search-by");
+  let search_val = urlParams.get("search-val");
+
+  if (
+    search_by &&
+    ["sender", "selected", "content", "att"].includes(search_by)
+  ) {
+    $("#search-options").val(search_by).change();
+  }
+  if (search_val) {
+    $("#search-input").val(search_val).change();
+  }
+
+  let page = $(location).prop("hash").substr(1).toLowerCase();
+  if (page === "important") {
+    $("#inbox-sidebar-important").addClass("active-inbox-section");
+    $("#search-options").css("display", "none");
+    $("#search-bar .vl").css("display", "none");
+    $("#search-input-container").css({ margin: "0.5em 1em", flex: "1" });
+  } else if (page === "sent") {
+    $("#inbox-sidebar-sent").addClass("active-inbox-section");
+    $("#search-bar").remove();
+  } else {
+    $("#inbox-sidebar-home").addClass("active-inbox-section");
+  }
 
   loadMessages(0).then(function () {
     $(".loader-container").each(function () {
@@ -110,26 +168,6 @@ async function init() {
   });
 
   $("#inbox-mail-list-container").on("resize scroll", loadNextPage);
-
-  let urlParams = new URLSearchParams(window.location.search);
-  let search_by = urlParams.get("search-by");
-  let search_val = urlParams.get("search-val");
-
-  if (search_by) {
-    $("#search-sel-menu").val(search_by).change();
-  }
-  if (search_val) {
-    $("#search-input").val(search_val).change();
-  }
-
-  let page = $(location).prop("hash").substr(1);
-  if (page === "important") {
-    $("#inbox-sidebar-important").addClass("active-inbox-section");
-  } else if (page === "sent") {
-    $("#inbox-sidebar-sent").addClass("active-inbox-section");
-  } else {
-    $("#inbox-sidebar-home").addClass("active-inbox-section");
-  }
 }
 
 window.onload = init;

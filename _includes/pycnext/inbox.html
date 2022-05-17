@@ -2,12 +2,13 @@
 <script src="/assets/js/pycnext/inbox.js"></script>
 
 <div id="inbox-parent" class="flex">
-    
+
     {% include pycnext/inbox-sidebar.html %}
 
     <div id="inbox-workspace-container" class="flex flex-col">
+        <form id="search-form"></form>
         <div id="search-bar" class="flex">
-            <select name="search-by" id="search-options" class="pycnext-select">
+            <select form="search-form" name="search-by" id="search-options" class="pycnext-select">
                 <option value="sender">Author</option>
                 <option selected="selected" value="subj">Subject</option>
                 <option value="content">Content</option>
@@ -15,7 +16,10 @@
             </select>
             <div class="vl"></div>
             <div id="search-input-container" class="flex">
-                <input placeholder="Search..." type="text" name="search-value" id="search-input">
+                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input">
+                <button type="submit" class="i-container" id="search-submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
         </div>
         <hr class="divider">
