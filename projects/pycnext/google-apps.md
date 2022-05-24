@@ -1,4 +1,4 @@
 ---
 title: Google Apps
-layout: pyc
+layout: pycnext/base
 ---

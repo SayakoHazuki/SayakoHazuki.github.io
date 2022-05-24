@@ -1,4 +1,4 @@
 ---
 title: Discussion
-layout: pyc
+layout: pycnext/base
 ---

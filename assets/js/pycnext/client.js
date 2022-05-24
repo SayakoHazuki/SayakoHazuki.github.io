@@ -104,6 +104,66 @@ class PycClient {
       });
     });
 
+  getCirculars = (page, retries = 0) =>
+    new Promise((resolve, reject) => {
+      console.log("Getting circulars list");
+      fetch(`https://PYCNextAPI.ookai9097oo.repl.co/circulars/${page}`, {
+        method: "GET",
+        mode: "cors",
+        credentials: "omit",
+        headers: {
+          "PYC-PHPSESSID": getCookie("PHPSESSID"),
+          "PYC-TOKEN": getCookie("access_token"),
+        },
+      }).then((response) => {
+        if (response.status === 401) {
+          if (retries < 1) {
+            this.login().then(
+              () => {
+                this.getCirculars(page, 1);
+              },
+              () => {
+                window.location.href = "./login";
+              }
+            );
+          }
+        }
+        response.json().then((data) => {
+          resolve(data);
+        });
+      });
+    });
+
+  getCircular = (id, retries = 0) =>
+    new Promise((resolve, reject) => {
+      console.log(`Getting Circular ${id}`);
+      fetch(`https://PYCNextAPI.ookai9097oo.repl.co/circular/${id}`, {
+        method: "GET",
+        mode: "cors",
+        credentials: "omit",
+        headers: {
+          "PYC-PHPSESSID": getCookie("PHPSESSID"),
+          "PYC-TOKEN": getCookie("access_token"),
+        },
+      }).then((response) => {
+        if (response.status === 401) {
+          if (retries < 1) {
+            this.login().then(
+              () => {
+                this.getCirculars(page, 1);
+              },
+              () => {
+                window.location.href = "./login";
+              }
+            );
+          }
+        }
+        response.json().then((data) => {
+          resolve(data);
+        });
+      });
+    });
+
   sendMessage = (recipients, subject, content, savemail) =>
     new Promise((resolve, reject) => {
       fetch(`https://PYCNextAPI.ookai9097oo.repl.co/compose`, {

@@ -1,4 +1,4 @@
 ---
 title: Learning
-layout: pyc
+layout: pycnext/base
 ---

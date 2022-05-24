@@ -28,12 +28,20 @@
   justify-content: center;
 }
 
+.relative {
+  position: relative;
+}
+
 html,
 body,
 .full-size {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+*[data-hidden] {
+  display: none;
 }
 
 /* font styling */
@@ -88,6 +96,11 @@ button {
 .highlight-btn:hover {
   text-decoration: 0;
   background-color: var(--highlight-dark-color);
+}
+
+.dark-hover:not(.sp-radius):hover {
+  background-color: var(--bg-secondary-color);
+  border-radius: 0.5em;
 }
 
 /* sidebar */
@@ -177,11 +190,101 @@ hr.divider {
   border-color: var(--bg-secondary-color);
 }
 
+hr.divider[data-no-margin] {
+  margin: 0;
+}
+
+/* Secondary Sidebar */
+
+/* sidebar */
+
+#sec-sidebar {
+  border-right: var(--bg-secondary-color) 1px solid;
+  height: 100%;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 749px) {
+  #sec-sidebar {
+    flex: 0 0 200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #sec-sidebar {
+    flex: 0 0 300px;
+  }
+}
+
+#sec-sidebar-header {
+  padding: 0 1em;
+}
+
+.sec-sidebar-item {
+  margin: 1.2em 1em;
+  display: flex;
+}
+
+.sec-sidebar-item.active-inbox-section,
+.sec-sidebar-item.active-sec-sidebar-item {
+  color: var(--highlight-color);
+  font-weight: 700;
+}
+
+.sec-sidebar-divider {
+  margin: 0 1em;
+  border-color: var(--bg-secondary-color);
+}
+
+.sec-sidebar-nav {
+  padding: 0.75em 1.5em;
+  margin: 0.3em 1.5em;
+  border-radius: 1em;
+}
+
+.sec-sidebar-nav:hover {
+  background-color: var(--bg-secondary-color);
+}
+
+@media screen and (max-width: 748px) {
+  #sec-sidebar {
+    flex: 0 0 fit-content;
+  }
+
+  #sec-sidebar-header {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .sec-sidebar-item {
+    margin: 0;
+  }
+
+  .sec-sidebar-divider {
+    margin: 0 10px;
+  }
+
+  .sec-sidebar-nav {
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  #sec-sidebar > * {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+  }
+}
+
 /* contents */
 
 #contents-container {
   flex-grow: 1;
   overflow-y: hidden;
+}
+
+.contents-parent {
+  height: 100%;
+  width: 100%;
 }
 
 /* tables */
@@ -199,6 +302,16 @@ hr.divider {
 
 .table .col {
   display: table-cell;
+}
+
+.list-container {
+  padding: 1em 3em;
+  width: 100%;
+}
+
+.list-container > * {
+  flex: 1;
+  margin: 1em 0;
 }
 
 /* loader */
@@ -258,4 +371,103 @@ hr.divider {
   .m-hide {
     display: none;
   }
+}
+
+/* Workspace: Style2 */
+
+.workspace-style2.container {
+  margin: 1em;
+}
+@media screen and (max-width: 748px) {
+  .workspace-style2.container {
+    min-width: 0;
+    padding: 0;
+  }
+
+  .workspace-style2.contents {
+    padding: 1em;
+  }
+
+  .workspace-style2 .shadow {
+    display: none;
+  }
+}
+
+.workspace-style2.buttons-row {
+  flex: 0 0 2em;
+  margin: 0 1em 1em 1em;
+}
+
+.workspace-style2.header {
+  flex: 0 0 2em;
+  margin: 1em calc(1em - 8px) 0 calc(1em - 8px);
+  border-bottom: var(--bg-secondary-color);
+  box-shadow: 0 6px 8px -8px var(--bg-dark-color);
+  padding: 1em;
+  z-index: 1;
+}
+
+.workspace-style2.contents {
+  flex: 2 0 calc(100vh - 10em);
+  margin: 0 1em 1em 1em;
+  padding: 1em 0 3em 0;
+  color: black;
+  overflow-y: auto;
+}
+
+.workspace-style2.contents img,
+.workspace-style2.contents video,
+.workspace-style2.contents image,
+.workspace-style2.contents iframe {
+  max-width: 100%;
+  height: auto;
+  object-fit: scale-down;
+}
+
+.workspace-style2.container .shadow {
+  position: absolute;
+  width: calc(100% - 6em);
+  height: 10px;
+  bottom: 1em;
+  box-shadow: inset 0 -6px 8px -8px var(--bg-dark-color);
+  z-index: 1;
+}
+
+.workspace-style2.attachment-outline {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.workspace-style2.attachment-name {
+  line-height: 1.5em;
+  border: 1px #606c71 solid;
+  border-radius: 1.25em;
+  padding: 0.15em 0.75em;
+  width: fit-content;
+  margin: 0.25em 0.25em;
+  color: black;
+  max-width: 49%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workspace-style2.attachment-name i {
+  margin: 0 0.3em 0 0;
+}
+
+.workspace-style2.button {
+  height: 2em;
+  width: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+}
+.workspace-style2.button:hover {
+  background-color: var(--bg-secondary-color);
+  text-decoration: none;
 }

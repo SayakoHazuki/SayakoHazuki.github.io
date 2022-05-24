@@ -1,4 +1,4 @@
 ---
 title: School Admin
-layout: pyc
+layout: pycnext/base
 ---

@@ -1,4 +1,4 @@
 ---
 title: Committees & Societies
-layout: pyc
+layout: pycnext/base
 ---

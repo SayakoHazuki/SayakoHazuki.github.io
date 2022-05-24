@@ -3,16 +3,16 @@
 
 <div id="inbox-parent" class="flex">
 
-    {% include pycnext/inbox-sidebar.html %}
+    {% include pycnext/sidebars/mailbox.html %}
 
     <div id="inbox-workspace-container">
-        <div id="inbox-mail-container" class="flex flex-col">
-            <div id="mail-page-actions">
+        <div id="inbox-mail-container" class="flex flex-col workspace-style2 container">
+            <div id="mail-page-actions" class="workspace-style2 buttons-row">
                 <a href="{{site.url}}/projects/pycnext/mail/mailbox" class="mail-action-btn"><i
                         class="fa-solid fa-angle-left"></i></a>
             </div>
             <hr class="divider">
-            <div id="mail-page-header">
+            <div id="mail-page-header" class="workspace-style2 header">
                 <div id="mail-header-title-flexbox">
                     <div id="mail-header-title">
                     </div>
@@ -22,7 +22,7 @@
                     <div id="mail-timestamp"></div>
                 </div>
             </div>
-            <div id="mail-full-content">
+            <div id="mail-full-content" class="workspace-style2 contents">
                 <div class="loader-container">
                     <div class="loader"></div>
                 </div>

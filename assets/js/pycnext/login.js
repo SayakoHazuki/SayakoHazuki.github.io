@@ -18,7 +18,9 @@ function login() {
       () => {
         const urlParams = new URLSearchParams(window.location.search);
         const redirectURL = urlParams.get("redirect_to");
-        window.location.href = `/projects/pycnext/${redirectURL}` || "/projects/pycnext/mail/mailbox";
+        window.location.href =
+          `/projects/pycnext/${redirectURL}` ||
+          "/projects/pycnext/mail/mailbox";
       },
       (reject_reason) => {
         $("#login-btn").text("Login");
@@ -39,22 +41,18 @@ function login() {
     .catch((e) => console.log);
 }
 
-function init() {
-  console.log("initializing");
-
-  $("#login-btn").click(login);
-
-  $(document).on("keypress", function (e) {
-    if (e.which == 13) {
-      login();
-    }
-  });
-}
-
 function clearErrorMsgs() {
   $("#error-msg").each(function () {
     $(this).remove();
   });
 }
 
-window.onload = init;
+console.log("initializing");
+
+$("#login-btn").click(login);
+
+$(document).on("keypress", function (e) {
+  if (e.which == 13) {
+    login();
+  }
+});

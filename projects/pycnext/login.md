@@ -1,3 +1,3 @@
 ---
-layout: pyc-login
+layout: pycnext/login
 ---

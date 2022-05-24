@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/assets/css/pycnext/inbox.css">
-<script src="/assets/js/pycnext/inbox.js"></script>
+<script src="/assets/js/pycnext/mail/inbox.js"></script>
 
 <div id="inbox-parent" class="flex">
 
-    {% include pycnext/inbox-sidebar.html %}
+    {% include pycnext/sidebars/mailbox.html %}
 
     <div id="inbox-workspace-container" class="flex flex-col">
         <form id="search-form"></form>
@@ -17,10 +17,19 @@
             <div class="vl"></div>
             <div id="search-input-container" class="flex">
                 <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input">
-                <button type="submit" class="i-container" id="search-submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <button type="submit" class="i-container dark-hover" id="search-submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
+        </div>
+        <hr class="divider">
+
+        <div id="mail-list-actions" class="flex">
+            <div id="mail-selection" class="flex">
+                <button id="multiselect-btn" class="i-container dark-hover"><i class="fa-solid fa-list-check"></i></button>
+            </div>
+            <button id="refresh-mail-list" class="i-container dark-hover"><i class="fa-solid fa-rotate-right"></i></button>
+            <button id="filter-btn" class="i-container dark-hover"><i class="fa-solid fa-filter"></i></button>
         </div>
         <hr class="divider">
 

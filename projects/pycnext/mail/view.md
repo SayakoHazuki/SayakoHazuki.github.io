@@ -1,5 +1,5 @@
 ---
 title: View Message
-layout: pyc
+layout: pycnext/base
 ---
 {% include pycnext/mail.html %}

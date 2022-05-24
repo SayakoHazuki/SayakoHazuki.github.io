@@ -1,5 +1,5 @@
 ---
 title: Compose
-layout: pyc
+layout: pycnext/base
 ---
 {% include pyc-compose.html %}

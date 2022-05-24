@@ -1,4 +1,4 @@
 ---
 title: Links
-layout: pyc
+layout: pycnext/base
 ---

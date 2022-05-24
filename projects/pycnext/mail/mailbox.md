@@ -1,4 +1,4 @@
 ---
-layout: pyc
+layout: pycnext/base
 ---
 {% include pycnext/inbox.html %}

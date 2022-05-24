@@ -23,6 +23,13 @@ const loadMessages = (pageNum) =>
 
     pyc.getMessages(pageNum, 0, options).then((messages) => {
       var inboxElement = $("#inbox-mail-list");
+      if (!JSON.parse(messages).length) {
+        console.log(messages);
+        $("#inbox-mail-list").append(
+          '<div class="flex just-ctr"><div>No email found.</div></div>'
+        );
+        return reject();
+      }
       for (const message of JSON.parse(messages)) {
         var mailElement = $(
           `<a href="/projects/pycnext/mail/view?id=${message.id.main}${
@@ -30,7 +37,7 @@ const loadMessages = (pageNum) =>
           }" class='mail-row flex m-flex-col'></a>`
         );
         mailElement.append(
-          `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}">`
+          `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}" data-hidden>`
         );
         if (!options.sent) {
           mailElement.append(
@@ -159,13 +166,20 @@ async function init() {
     $("#inbox-sidebar-home").addClass("active-inbox-section");
   }
 
-  loadMessages(0).then(function () {
-    $(".loader-container").each(function () {
-      $(this).remove();
-    });
-    initMessageActionsBtns();
-    loadNextPage();
-  });
+  loadMessages(0).then(
+    function () {
+      $(".loader-container").each(function () {
+        $(this).remove();
+      });
+      initMessageActionsBtns();
+      loadNextPage();
+    },
+    function () {
+      $(".loader-container").each(function () {
+        $(this).remove();
+      });
+    }
+  );
 
   $("#inbox-mail-list-container").on("resize scroll", loadNextPage);
 }

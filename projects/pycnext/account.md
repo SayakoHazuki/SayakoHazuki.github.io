@@ -1,4 +1,4 @@
 ---
 title: User Account
-layout: pyc
+layout: pycnext/base
 ---

@@ -1,0 +1,32 @@
+#circulars-list {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.circ-row {
+  line-height: 3.5;
+  margin: 0;
+  padding: 0 1.5em;
+}
+
+.circ-row:hover,
+.circ-row *:hover {
+  text-decoration: none;
+  background-color: var(--bg-secondary-color);
+  color: black;
+}
+
+.circ-list-subject {
+  flex: 8;
+  margin: 0 1.5em 0 0;
+}
+
+#end-of-list {
+  height: 1em;
+}
+
+@media screen and (max-width: 748px) {
+  #circular-view {
+    order: 1;
+  }
+}
