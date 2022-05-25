@@ -17,7 +17,9 @@ const loadCirculars = (pageNum) =>
         );
         let subjectElement = `<div class="circ-list-subject overflow-ellipsis">${circular.subject}</div>`;
         let [_date, _year] = circular.date.split(",");
-        var timestampElement = `<div class="right-text circ-list-timestamp overflow-ellipsis"><span class="circ-date">${_date}</span><span class="circ-year">, ${_year}</span></div>`;
+        var timestampElement = `<div class="right-text circ-list-timestamp overflow-ellipsis" data-circ-date>
+                                <span class="circ-date">${_date}</span><span class="circ-year">, ${_year}</span>
+                                </div>`;
 
         circularListItem.append(subjectElement);
         circularListItem.append(timestampElement);
@@ -36,18 +38,38 @@ const loadCircular = (id) =>
   new Promise((resolve, reject) => {
     pyc.getCircular(id, 0).then((circular) => {
       $("#circulars-list").attr("id", "circular-container");
-      $("#circular-container").addClass("workspace-style2")
-      $("#circular-container").addClass("container")
-      $("#circular-container").addClass("relative")
+      $("#circular-container").addClass("relative");
       $("#circular-container").html(
         `
         <div class="shadow"></div>
         <div id="circular-header" class="workspace-style2 header">
-          <div id="circular-subject">${circular.subject}</div>
+          <div id="circular-title" class="flex align-ctr">
+            <a href="/projects/pycnext/admin/circulars" class="workspace-style2 button">
+                <i class="fa-solid fa-angle-left"></i>
+            </a>
+            <div id="circular-subject">
+            ${circular.subject}
+            <span id="m-circular-date">${circular.date}</div>
+            </div>
+          </div>
           <div id="circular-date">${circular.date}</div>
         </div>
-        <div id="circular-description" class="flex workspace-style2 contents m-flex-col">
-          <div id="circular-description-text">${circular.description}</div>
+        <div
+          id="circular-description"
+          class="flex workspace-style2 contents m-flex-col"
+        >
+        ${
+          !circular.description.length
+            ? ""
+            : `
+                <div id="circular-description-text">
+                  <span>${circular.description}</span>
+                  <div class="expander">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                </div>
+            `
+        }
         </div>
         `
       );
@@ -55,15 +77,20 @@ const loadCircular = (id) =>
       <div id="circular-view"></div>
       `);
       $("#circular-description").css("position", "relative");
-      $("#circular-view").css("flex", "1 0 60%");
-      $("#circular-view").css("margin", "1em");
-      $("#circular-view").css("max-width", "80%");
       $("#circular-description-text").css("margin", "1em");
       let view_width = $("#circular-view").width();
-      $("#circular-view").height(`${view_width * 1.4142}px`);
+      if (window.matchMedia("(max-width: 748px)").matches) {
+        $("#circular-view").css("flex", `0 0 ${view_width * 1.4142}px`);
+      } else {
+        $("#circular-view").height(`${view_width * 1.4142}px`);
+      }
       $(window).on("resize", function () {
         let view_width = $("#circular-view").width();
-        $("#circular-view").height(`${view_width * 1.4142}px`);
+        if (window.matchMedia("(max-width: 748px)").matches) {
+          $("#circular-view").css("flex", `0 0 ${view_width * 1.4142}px`);
+        } else {
+          $("#circular-view").height(`${view_width * 1.4142}px`);
+        }
       });
       var adobeDCView = new AdobeDC.View({
         clientId: ADOBE_S,

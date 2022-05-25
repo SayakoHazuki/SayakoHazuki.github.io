@@ -377,6 +377,7 @@ hr.divider[data-no-margin] {
 
 .workspace-style2.container {
   margin: 1em;
+  min-width: 0;
 }
 @media screen and (max-width: 748px) {
   .workspace-style2.container {
@@ -396,6 +397,20 @@ hr.divider[data-no-margin] {
 .workspace-style2.buttons-row {
   flex: 0 0 2em;
   margin: 0 1em 1em 1em;
+}
+
+@media screen and (max-width: 748px) {
+  .workspace-style2.buttons-row .i-container {
+    margin: auto 4px;
+  }
+
+  .workspace-style2.buttons-row .i-container:first-child {
+    margin: auto 4px auto 0;
+  }
+
+  .workspace-style2.buttons-row .i-container + .i-container {
+    margin-left: -4px;
+  }
 }
 
 .workspace-style2.header {

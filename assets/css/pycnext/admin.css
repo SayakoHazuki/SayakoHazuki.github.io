@@ -1,3 +1,22 @@
+.search-outline {
+  flex: 1 0 0;
+  border-radius: 0.5em;
+  padding: 0.4em;
+  display: flex;
+  border: 1px var(--bg-dark-color) solid;
+}
+
+#search-input {
+  width: 100%;
+  flex: 1 0 0;
+}
+
+.search-outline #search-submit {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0;
+}
+
 #circulars-list {
   flex: 1 0 0;
   min-width: 0;
@@ -16,6 +35,21 @@
   color: black;
 }
 
+@media screen and (max-width: 748px) {
+  .circ-row {
+    line-height: 1.5;
+    margin: 0.5em 0;
+  }
+
+  .circ-row .right-text[data-circ-date] {
+    text-align: left;
+    color: var(--bg-dark-color);
+    font-weight: 300;
+    font-family: arial;
+    font-size: 0.9em;
+  }
+}
+
 .circ-list-subject {
   flex: 8;
   margin: 0 1.5em 0 0;
@@ -25,8 +59,78 @@
   height: 1em;
 }
 
+#circular-description-text {
+  margin: 1;
+}
+
+#circular-view {
+  flex: 1 0 60%;
+  max-width: 80%;
+}
+
+#m-circular-date {
+  display: none;
+}
+
+.expander {
+  display: none;
+}
+
 @media screen and (max-width: 748px) {
+  #circular-header {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  #circular-subject {
+    position: relative;
+  }
+
+  #circular-date {
+    display: none;
+  }
+
+  #m-circular-date {
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    font-size: 0.9em;
+    font-family: arial;
+    color: var(--bg-dark-color);
+    display: inline-block;
+  }
+
+  #circular-description {
+    margin: 0;
+  }
+
+  #circular-description-text {
+    padding: 1em;
+    margin: 0;
+    border: 1px var(--bg-dark-color) solid;
+    border-radius: 0.7em;
+    max-height: 20vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #circular-description-text span {
+    display: block;
+    flex: 1 0 0;
+    overflow-y: auto;
+    min-height: 0;
+  }
+
   #circular-view {
     order: 1;
+    margin: 1em;
+    max-width: none;
+    flex: unset unset unset;
+    border: 1px var(--bg-secondary-color) solid;
+  }
+
+  .expander {
+    display: block;
+    flex: 0 0 fit-content;
   }
 }
