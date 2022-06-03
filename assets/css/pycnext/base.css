@@ -114,7 +114,7 @@ button {
     flex: 0 0 50px;
 }
 
-@media screen and (max-width: 748px) {
+@media screen and (max-width: 748px), screen and (orientation: portrait) {
     #main-sidebar {
         border-right: none;
         border-bottom: var(--bg-secondary-color) 1px solid;
@@ -141,9 +141,9 @@ button {
     align-items: center;
 }
 
-.nav-btn:hover,
-.site-logo:hover,
-.site-main-btn:hover {
+.nav-btn:not([no-hover-fx]):hover,
+.site-logo:not([no-hover-fx]):hover,
+.site-main-btn:not([no-hover-fx]):hover {
     text-decoration: none;
     background-color: var(--bg-secondary-color);
 }
@@ -235,17 +235,31 @@ hr.divider[data-no-margin] {
     border-right: var(--bg-secondary-color) 1px solid;
     height: 100%;
     overflow-y: auto;
+    align-items: center;
 }
 
 @media screen and (min-width: 749px) {
     #sec-sidebar {
-        flex: 0 0 200px;
+        flex: 0 0 175px;
+    }
+
+    .sec-sidebar-item {
+        width: 150px
+    }
+
+    .sec-sidebar-nav {
+        padding-left: 0;
+        padding-right: 0
     }
 }
 
 @media screen and (min-width: 1024px) {
     #sec-sidebar {
-        flex: 0 0 300px;
+        flex: 0 0 225px;
+    }
+
+    .sec-sidebar-item {
+        width: 200px
     }
 }
 
@@ -265,7 +279,8 @@ hr.divider[data-no-margin] {
 }
 
 .sec-sidebar-divider {
-    margin: 0 1em;
+    margin: 0;
+    width: calc(100% - 1em);
     border-color: var(--bg-secondary-color);
 }
 
@@ -281,13 +296,13 @@ hr.divider[data-no-margin] {
 
 @media screen and (max-width: 748px) {
     #sec-sidebar {
-        flex: 0 0 fit-content;
+        flex: 0 0 3em;
         max-width: 100px;
         transition: max-width 2s;
     }
 
     #sec-sidebar:not([active]) {
-        max-width: 0
+        max-width: 0;
     }
 
     #sec-sidebar-header {
@@ -296,7 +311,7 @@ hr.divider[data-no-margin] {
     }
 
     .sec-sidebar-item {
-        margin: 0 auto;
+        margin: 0;
     }
 
     .sec-sidebar-divider {
@@ -305,7 +320,7 @@ hr.divider[data-no-margin] {
 
     .sec-sidebar-nav {
         padding: 0;
-        margin: 0 auto;
+        margin: 0;
     }
 
     #sec-sidebar>* {
@@ -421,6 +436,20 @@ hr.divider[data-no-margin] {
     }
 
     .m-hide {
+        display: none;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    .p-flex-col {
+        flex-direction: column;
+    }
+
+    .p-flex-row {
+        flex-direction: row;
+    }
+
+    .p-hide {
         display: none;
     }
 }
