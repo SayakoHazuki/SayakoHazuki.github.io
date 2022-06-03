@@ -3,9 +3,7 @@
 
 <div class="flex contents-parent">
 
-    {% include pycnext/sidebars/admin.html %}
-
-    {% if site.url contains "localhost" %}
+    {% include pycnext/sidebars/admin.html %} {% if site.url contains "localhost" %}
     <script>
         var ADOBE_S = "8758f23adb6c4ad193fa51232bb57f98"
     </script>
@@ -17,10 +15,8 @@
 
     <div class="flex flex-col list-container workspace-style2 container">
         <div id="circular-buttons-row" class="workspace-style2 buttons-row flex">
-            <div id="sort-btn" class="i-container dark-hover workspace-style2 button"><i
-                    class="fa-solid fa-arrow-down-wide-short"></i></div>
-            <div id="filter-btn" class="i-container dark-hover workspace-style2 button"><i
-                    class="fa-solid fa-filter"></i></div>
+            <div id="sort-btn" class="i-container dark-hover workspace-style2 button"><i class="fa-solid fa-arrow-down-wide-short"></i></div>
+            <div id="filter-btn" class="i-container dark-hover workspace-style2 button"><i class="fa-solid fa-filter"></i></div>
 
             <div class="search-outline">
                 <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input">
@@ -31,7 +27,9 @@
             <script>
                 let param = new URL(document.location).searchParams;
                 let id = param.get("id");
-                if (/[0-9]{1,6}/.test(id)) { $("#circular-buttons-row").remove() };
+                if (/[0-9]{1,6}/.test(id)) {
+                    $("#circular-buttons-row").remove()
+                };
             </script>
         </div>
         <div id="circulars-list">

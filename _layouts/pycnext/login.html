@@ -2,17 +2,13 @@
 <html lang="{{ site.lang | default: 'en-US' }}">
 
 <head>
-    <meta charset="UTF-8">
-
-    {% seo %}
+    <meta charset="UTF-8"> {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
-        type="text/css" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
     <link rel="shortcut icon" type="image/png" href="/assets/i/pycnext/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <link rel="stylesheet"
-        href="{{'/assets/css/pycnext/login.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{'/assets/css/pycnext/login.css?v=' | append: site.github.build_revision | relative_url }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta http-equiv="cache-control" content="no-cache" />
@@ -20,7 +16,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/assets/js/pycnext/base.js"></script>
+    <script src="/assets/js/pycnext/init.js"></script>
     <script src="/assets/js/pycnext/client.js"></script>
 </head>
 
@@ -36,17 +32,13 @@
 
                 <button type="submit" id="login-btn">Login</button>
                 <div id="disclaimer-toggle">Disclaimer</div>
-                <div id="small-disclaimer">This website is made for learning purposes and is not endorsed by, directly
-                    affiliated with, maintained, or
-                    authorized by SPYC.</div>
+                <div id="small-disclaimer">This website is made for learning purposes and is not endorsed by, directly affiliated with, maintained, or authorized by SPYC.</div>
             </div>
             <div id="site-banner">
                 <div id="site-title">PYCNext</div>
                 <div id="site-slogan">ーPYCNet, but with a modern design.</div>
                 <div id="privacy-policy">We do not store your account information.</div>
-                <div id="large-disclaimer">This website is made for learning purposes and is not endorsed by, directly
-                    affiliated with, maintained, or
-                    authorized by SPYC.</div>
+                <div id="large-disclaimer">This website is made for learning purposes and is not endorsed by, directly affiliated with, maintained, or authorized by SPYC.</div>
             </div>
         </div>
     </div>
