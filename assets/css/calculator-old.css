@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "digital";
+  src: url("/assets/fonts/digital.ttf");
+}
+
+.calc-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: silver;
+  width: 360px;
+  padding: 10px;
+  font-weight: bold;
+  border: #3c3f46 solid 2px;
+  border-radius: 10px;
+  margin: calc(50% - 182px);
+}
+
+@media screen and (max-width: 400px) {
+  .calc-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: silver;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: none;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.calc-container .calc-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.calc-container *:not(.display-bar *) {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.flex1 {
+  flex: 1;
+}
+.flex2 {
+  flex: 2;
+}
+.flex3 {
+  flex: 3;
+}
+.flex4 {
+  flex: 4;
+}
+.flex5 {
+  flex: 5;
+}
+.flex6 {
+  flex: 6;
+}
+.flex9 {
+  flex: 9;
+}
+.flex12 {
+  flex: 12;
+}
+.flex14 {
+  flex: 14;
+}
+.calc-btn {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #3c3f46;
+  border-radius: 10px 10px 15px 15px;
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+  text-align: center;
+  font-size: 100%;
+  cursor: pointer;
+}
+
+.calc-desctxt-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 0.8em;
+  height: 1.2em;
+  text-align: center;
+}
+
+.calc-container > div {
+  margin-bottom: 5px;
+}
+
+.calc-container * {
+  overflow: hidden;
+}
+
+.flex2 .calc-row {
+  height: 1.7em;
+}
+
+#row5,
+#row6,
+#row7,
+#row8 {
+  margin-bottom: 0;
+}
+
+.flex3 .calc-btn {
+  min-height: 1em;
+  font-size: 1.2em;
+  padding: 2px 0;
+}
+
+#display-bar {
+  margin: 0 3% 3% 3%;
+  min-height: 1.2em;
+  font-size: 5em;
+  background-color: rgb(129, 133, 119);
+  color: black;
+  line-height: 1.2em;
+  padding: 0.05em 10px 0 10px;
+  border: black 2px solid;
+  border-radius: 6px;
+}
+
+.txt08 {
+  font-size: 0.8em;
+}
+
+#cb-prog,
+#cb-fmla {
+  background-color: rgb(255, 115, 0);
+}
+
+@media screen and (min-width: 600px) {
+  #cb-prog:hover,
+  #cb-fmla:hover {
+    background-color: rgb(255, 165, 92);
+  }
+
+  .calc-btn:hover {
+    background-color: #7d7e81;
+  }
+}
+
+#tip-bar {
+  text-align: left;
+  font-size: 0.15em;
+  line-height: 1.05em;
+  min-height: 1.05em;
+  padding-top: 0.05em;
+  display: flex;
+  flex-direction: row;
+}
+
+#tip-bar .highlight-icon:not(.mode-disabled) {
+  background-color: black;
+  border-radius: 0.2em;
+  text-align: center;
+}
+
+#tip-bar .highlight-icon {
+  color: rgb(129, 133, 119);
+}
+
+#display-top {
+  text-align: left;
+  font-size: 0.4em;
+  line-height: 1em;
+  min-height: 1em;
+}
+
+#display-main {
+  vertical-align: top;
+  text-align: right;
+  font-size: 0.6em;
+  line-height: 1em;
+  min-height: 1em;
+}
+
+#display-bar,
+#display-bar * {
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "digital", "Arial";
+}
+
+.disabled {
+  background-color: #7d7e81;
+}
+#cb-prog.disabled,
+#cb-fmla.disabled {
+  background-color: rgb(255, 165, 92);
+}
+
+.red-txt {
+  color: rgb(196, 25, 25);
+}
+
+.sci-no {
+  font-size: 0.3em;
+  vertical-align: top;
+}
+
+.on {
+  display: block;
+}
+
+.off {
+  display: none;
+}
+
+.not-implemented {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+.shift-shortcut {
+  color: rgb(145, 128, 82);
+}
+
+.alpha-shortcut {
+  color: rgb(196, 25, 25);
+}
+
+#title-bar {
+  display: flex;
+  margin: 0;
+  text-align: center;
+  color: black;
+}
+
+._08font {
+  line-height: 0.6em;
+  font-size: 0.6em;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.solar-thing {
+  background-color: rgb(99, 102, 90);
+  border: solid black 1px;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+#title-tip {
+  display: flex;
+  margin: 0;
+  color: black;
+  font-weight: bold;
+  line-height: 1em;
+  font-size: 0.8em;
+}
+
+.r-align {
+  text-align: right;
+}
+
+.ita {
+  font-style: italic;
+}
+
+#calc-title {
+  height: 3em;
+  display: flex;
+  flex-direction: column;
+}
+
+.one-line {
+  white-space: nowrap;
+}
