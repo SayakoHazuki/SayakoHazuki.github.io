@@ -106,7 +106,7 @@ function loadNextPage() {
         console.log($("#end-of-inbox").attr("data-next-page"));
         if (isNaN(nextPageNum)) return;
         $("#inbox-mail-list").append(
-          '<div class="loader-container" data-padding="true"><div class="loader"></div></div>'
+          '<div class="loader-container" data-padding="true"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
         );
         console.log(nextPageNum);
         loadMessages(nextPageNum).then(function () {

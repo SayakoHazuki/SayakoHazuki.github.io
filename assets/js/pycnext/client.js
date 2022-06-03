@@ -63,7 +63,7 @@ class PycClient {
                 this.getMessages(page, 1);
               },
               () => {
-                window.location.href = "./login";
+                window.location.href = "/projects/pycnext/login";
               }
             );
           }
@@ -93,7 +93,7 @@ class PycClient {
                 this.getMessage(id, 1);
               },
               () => {
-                window.location.href = "./login";
+                window.location.href = "/projects/pycnext/login";
               }
             );
           }
@@ -123,7 +123,7 @@ class PycClient {
                 this.getCirculars(page, 1);
               },
               () => {
-                window.location.href = "./login";
+                window.location.href = "/projects/pycnext/login";
               }
             );
           }
@@ -153,7 +153,7 @@ class PycClient {
                 this.getCirculars(page, 1);
               },
               () => {
-                window.location.href = "./login";
+                window.location.href = "/projects/pycnext/login";
               }
             );
           }

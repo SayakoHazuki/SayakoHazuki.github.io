@@ -51,12 +51,14 @@ input[type="password"] {
 #large-disclaimer {
   display: none;
 }
+
 #disclaimer-toggle {
   display: block;
   width: 100%;
   text-align: center;
   text-decoration: underline;
 }
+
 #small-disclaimer {
   display: none;
   width: 100%;
@@ -72,9 +74,11 @@ input[type="password"] {
   #small-disclaimer {
     display: block;
   }
+
   #alt-disclaimer {
     display: none;
   }
+
   #disclaimer-toggle {
     display: none;
   }
@@ -126,19 +130,21 @@ input[type="password"] {
   #large-disclaimer {
     display: block;
   }
+
   #small-disclaimer {
     display: none;
   }
+
   #alt-disclaimer {
     display: none;
   }
+
   #disclaimer-toggle {
     display: none;
   }
 }
 
-@media only screen and (min-width: 480px) {
-}
+@media only screen and (min-width: 480px) {}
 
 @media only screen and (min-width: 768px) and (orientation: landscape) {
   #login-frame {
@@ -168,21 +174,26 @@ input[type="password"] {
   #large-disclaimer {
     display: block;
   }
+
   #small-disclaimer {
     display: none;
   }
+
   #alt-disclaimer {
     display: none;
   }
+
   #disclaimer-toggle {
     display: none;
   }
 }
+
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   #login-frame {
     width: 50%;
   }
 }
+
 @media only screen and (min-width: 1200px) and (orientation: landscape) {
   #login-frame {
     width: 40%;
@@ -286,32 +297,55 @@ img.avatar {
   justify-items: center;
 }
 
-.loader {
-  border: 0.3em solid #f3f3f3;
+.loader-ring {
+  display: inline-block;
+  position: relative;
+  width: 1.7em;
+  height: 1.7em;
+}
+
+
+.loader-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 1.3em;
+  height: 1.3em;
+  margin: 0.2em;
+  border: 0.2em solid #dadce0;
   border-radius: 50%;
-  border-top: 0.3em solid #606c71;
-  width: 2em;
-  height: 2em;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+  animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.2, 1) infinite;
+  border-color: #dadce0 transparent transparent transparent;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+
+.loader-ring div:nth-child(1) {
+  animation-delay: -0.3s;
 }
 
-@keyframes spin {
+.loader-ring div:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.loader-ring div:nth-child(3) {
+  animation-delay: -0.1s;
+}
+
+@keyframes loader-ring {
   0% {
     transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
   }
 }
 

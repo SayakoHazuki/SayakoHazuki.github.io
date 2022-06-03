@@ -92,7 +92,7 @@ async function init() {
     let mailSave = $("#save-mail-switch").prop("checked");
 
     $("#send-mail-btn").html(
-      '<div class="loader-container"><div class="loader"></div></div>'
+      '<div class="loader-container"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
     );
 
     pyc

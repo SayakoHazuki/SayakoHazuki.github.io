@@ -3,7 +3,6 @@ window.onload = init();
 
 async function init() {
   await checklogin()
-  $("#sidebar-message").addClass("active-page");
   loadMessage()
 }
 

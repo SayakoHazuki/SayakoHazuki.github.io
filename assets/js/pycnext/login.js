@@ -9,7 +9,7 @@ function login() {
     ).insertBefore($("#login-btn"));
   }
   $("#login-btn").html(
-    '<div class="loader-container"><div class="loader"></div></div>'
+    '<div class="loader-container"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
   );
   pyc = new PycClient(username, password);
   pyc
