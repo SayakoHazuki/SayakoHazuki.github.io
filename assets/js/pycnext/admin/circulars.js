@@ -24,7 +24,6 @@ const loadCirculars = (pageNum) =>
         circularListItem.append(subjectElement);
         circularListItem.append(timestampElement);
         container.append(circularListItem);
-        container.append('<hr class="divider" data-no-margin>');
       }
       endOfListElement = $(
         `<div id="end-of-list" data-next-page="${Number(pageNum) + 1}"></div>`
@@ -36,6 +35,12 @@ const loadCirculars = (pageNum) =>
 
 const loadCircular = (id) =>
   new Promise((resolve, reject) => {
+    $("#search-bar + hr").remove();
+    $("#search-bar").remove();
+
+    $("#circular-buttons-row + hr").remove();
+    $("#circular-buttons-row").remove();
+
     pyc.getCircular(id, 0).then((circular) => {
       $("#circulars-list").attr("id", "circular-container");
       $("#circular-container").addClass("relative");
@@ -121,7 +126,7 @@ function loadNextPage() {
       if (!$(".loader-container").length) {
         console.log($("#end-of-list").attr("data-next-page"));
         if (isNaN(nextPageNum)) return;
-        $("#inbox-mail-list").append(
+        $("#circulars-list").append(
           '<div class="loader-container" data-padding="true"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
         );
         console.log(nextPageNum);

@@ -1,26 +1,13 @@
-$("[data-sidebar-collapse]").click(function (e) {
+$(".menu-toggler").click(function (e) {
   e.preventDefault();
-  $("#sec-sidebar").removeAttr("active");
-  $("#site-main-ico").attr("menu-toggler", "");
-});
+  $("#sec-sidebar").attr("active", "");
 
-function toggleSidebarIfMediaMatch() {
-  if (window.matchMedia("(max-width: 748px)").matches) {
-    $("#site-main-ico").attr("menu-toggler", "");
-    // add active attr to sec-sidebar when click on menu-toggler
-    $("#site-main-ico").click(function (e) {
-      e.preventDefault();
-      $("#sec-sidebar").attr("active", "");
-      $("#site-main-ico").removeAttr("menu-toggler");
+  setTimeout(() => {
+    $("body").click(function (e) {
+      if ($(e.target).attr("id") !== "sec-sidebar") {
+        $("#sec-sidebar").removeAttr("active");
+        $("body").unbind("click");
+      }
     });
-  } else {
-    $("#sec-sidebar").attr("active", "");
-    $("#site-main-ico").removeAttr("menu-toggler");
-  }
-}
-
-toggleSidebarIfMediaMatch();
-
-$(window).resize(function () {
-  toggleSidebarIfMediaMatch();
+  }, 500);
 });

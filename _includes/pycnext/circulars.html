@@ -1,40 +1,57 @@
-<link rel="stylesheet" href="/assets/css/pycnext/admin.css">
+<link rel="stylesheet" href="/assets/css/pycnext/admin.css" />
 <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
 
 <div class="flex contents-parent">
-
-    {% include pycnext/sidebars/admin.html %} {% if site.url contains "localhost" %}
+    {% include pycnext/sidebars/admin.html %} {% if site.url contains "localhost"
+    %}
     <script>
-        var ADOBE_S = "8758f23adb6c4ad193fa51232bb57f98"
+        var ADOBE_S = "8758f23adb6c4ad193fa51232bb57f98";
     </script>
     {% else %}
     <script>
-        var ADOBE_S = "e95da6beaba547269aefb35f949ff173"
+        var ADOBE_S = "e95da6beaba547269aefb35f949ff173";
     </script>
     {% endif %}
 
-    <div class="flex flex-col list-container workspace-style2 container">
-        <div id="circular-buttons-row" class="workspace-style2 buttons-row flex">
-            <div id="sort-btn" class="i-container dark-hover workspace-style2 button"><i class="fa-solid fa-arrow-down-wide-short"></i></div>
-            <div id="filter-btn" class="i-container dark-hover workspace-style2 button"><i class="fa-solid fa-filter"></i></div>
-
-            <div class="search-outline">
-                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input">
-                <button type="submit" class="i-container dark-hover" id="search-submit">
+    <div class="flex flex-col workspace-style2 container">
+        <div id="search-bar" class="flex">
+            <div id="search-input-container" class="flex">
+                <div class="menu-toggler m-show p-show i-container" data-m-no-left-m>
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
+                <button type="submit" class="i-container dark-hover" id="search-submit" data-m-no-right-m>
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
-            <script>
-                let param = new URL(document.location).searchParams;
-                let id = param.get("id");
-                if (/[0-9]{1,6}/.test(id)) {
-                    $("#circular-buttons-row").remove()
-                };
-            </script>
         </div>
-        <div id="circulars-list">
+        <hr class="divider" />
+
+        <script>
+            let param = new URL(document.location).searchParams;
+            let id = param.get("id");
+            if (/[0-9]{1,6}/.test(id)) {
+                $("#circular-buttons-row").remove();
+            }
+        </script>
+        <div id="circular-buttons-row" class="workspace-style2 buttons-row flex">
+            <button id="sort-btn" class="i-container dark-hover">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+            <button id="filter-btn" class="i-container dark-hover">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+        </div>
+        <hr class="divider" />
+
+        <div id="circulars-list" class="workspace-style2 list-container">
             <div class="loader-container" data-padding="true">
-                <div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div>
+                <div class="loader-ring">
+                    <div data-loader-div1></div>
+                    <div data-loader-div2></div>
+                    <div data-loader-div3></div>
+                    <div data-loader-div4></div>
+                </div>
             </div>
         </div>
     </div>

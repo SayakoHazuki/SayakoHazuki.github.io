@@ -4,13 +4,7 @@
 }
 
 @media screen and (max-width: 748px) {
-  #compose-btn {
-    width: 2em;
-    height: 2em;
-    border-radius: 0.5em;
-    margin: 0;
-    padding: 0;
-  }
+  #compose-btn {}
 }
 
 /* main */
@@ -25,6 +19,7 @@
 #search-bar {
   margin: 0.5em 0;
   width: 100%;
+  align-items: center;
 }
 
 #search-options {
@@ -44,6 +39,33 @@
 
 #search-bar .vl {
   flex-shrink: 1;
+}
+
+@media screen and (max-width: 748px) {
+  #search-bar {
+    background-color: var(--bg-secondary-color);
+    flex: 0 0 3rem;
+    border-radius: 1.5rem;
+    margin: 1.4em 0.7em 0.7em 0.7em;
+    width: calc(100% - 1.4em);
+  }
+
+  #search-options {
+    display: none;
+  }
+
+  #search-options+.vl {
+    display: none;
+  }
+
+  #search-input {
+    background-color: transparent;
+  }
+
+  #search-input-container {
+    margin: 0.5em 1em;
+    flex: 1 1 0%;
+  }
 }
 
 #mail-list-actions {

@@ -1,8 +1,7 @@
-<link rel="stylesheet" href="/assets/css/pycnext/inbox.css">
+<link rel="stylesheet" href="/assets/css/pycnext/inbox.css" />
 <script src="/assets/js/pycnext/mail/inbox.js"></script>
 
-<div id="inbox-parent" class="flex">
-
+<div id="inbox-parent" class="flex contents-parent">
     {% include pycnext/sidebars/mailbox.html %}
 
     <div id="inbox-workspace-container" class="flex flex-col">
@@ -16,27 +15,41 @@
             </select>
             <div class="vl"></div>
             <div id="search-input-container" class="flex">
-                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input">
-                <button type="submit" class="i-container dark-hover" id="search-submit">
+                <div class="menu-toggler m-show p-show i-container" data-m-no-left-m>
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
+                <button type="submit" class="i-container dark-hover" id="search-submit" data-m-no-right-m>
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
         </div>
-        <hr class="divider">
+        <hr class="divider" />
 
         <div id="mail-list-actions" class="flex">
             <div id="mail-selection" class="flex">
-                <button id="multiselect-btn" class="i-container dark-hover"><i class="fa-solid fa-list-check"></i></button>
+                <button id="multiselect-btn" class="i-container dark-hover">
+                    <i class="fa-solid fa-list-check"></i>
+                </button>
             </div>
-            <button id="refresh-mail-list" class="i-container dark-hover"><i class="fa-solid fa-rotate-right"></i></button>
-            <button id="filter-btn" class="i-container dark-hover"><i class="fa-solid fa-filter"></i></button>
+            <button id="refresh-mail-list" class="i-container dark-hover">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+            <button id="filter-btn" class="i-container dark-hover">
+                <i class="fa-solid fa-filter"></i>
+            </button>
         </div>
-        <hr class="divider">
+        <hr class="divider" />
 
         <div id="inbox-mail-list-container">
             <div id="inbox-mail-list" class="flex flex-col">
                 <div class="loader-container" data-padding="true">
-                    <div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div>
+                    <div class="loader-ring">
+                        <div data-loader-div1></div>
+                        <div data-loader-div2></div>
+                        <div data-loader-div3></div>
+                        <div data-loader-div4></div>
+                    </div>
                 </div>
 
                 <!---
@@ -51,6 +64,5 @@
                 --->
             </div>
         </div>
-
     </div>
 </div>
