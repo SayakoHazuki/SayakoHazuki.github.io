@@ -4,3 +4,4 @@ _site
 .jekyll-metadata
 vendor
 github-page.code-workspace
+template.*

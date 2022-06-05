@@ -14,18 +14,16 @@
     {% endif %}
 
     <div class="flex flex-col workspace-style2 container">
-        <div id="search-bar" class="flex">
-            <div id="search-input-container" class="flex">
-                <div class="menu-toggler m-show p-show i-container" data-m-no-left-m>
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
-                <button type="submit" class="i-container dark-hover" id="search-submit" data-m-no-right-m>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+        <div class="flex workspace-style2 search-bar">
+            <div class="menu-toggler m-show p-show flex search-bar-button" data-m-no-left-m>
+                <i class="fa-solid fa-bars"></i>
             </div>
+            <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
+            <button type="submit" class="flex workspace-style2 button-style1 search-bar-button" id="search-submit"
+                data-m-no-right-m>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
-        <hr class="divider" />
 
         <script>
             let param = new URL(document.location).searchParams;
@@ -34,15 +32,17 @@
                 $("#circular-buttons-row").remove();
             }
         </script>
-        <div id="circular-buttons-row" class="workspace-style2 buttons-row flex">
-            <button id="sort-btn" class="i-container dark-hover">
+
+        <div class="flex workspace-style2 action-row">
+            <button id="filter-btn" class="i-container button-style2">
+                <i class="fa-solid fa-filter"></i>
+                Filters
+                <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <button id="refresh-btn" class="i-container button-style1 self-align-end" data-no-i-margin>
                 <i class="fa-solid fa-rotate-right"></i>
             </button>
-            <button id="filter-btn" class="i-container dark-hover">
-                <i class="fa-solid fa-filter"></i>
-            </button>
         </div>
-        <hr class="divider" />
 
         <div id="circulars-list" class="workspace-style2 list-container">
             <div class="loader-container" data-padding="true">

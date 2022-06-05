@@ -1,83 +1,106 @@
+function readQueryParams() {
+  let urlParams = new URLSearchParams(window.location.search);
+  let search_by = urlParams.get("search-by");
+  let search_val = urlParams.get("search-val");
+  let sort = urlParams.get("sort");
+
+  if ($(location).prop("hash").substr(1).toLowerCase() === "important") {
+    search_by = "useful";
+  }
+
+  options = {};
+  if (search_by) {
+    options["search-by"] = search_by;
+  }
+  if (search_val) {
+    options["search-val"] = search_val;
+  }
+  if (sort) {
+    options["sort"] = sort;
+  }
+  options.sent = $(location).prop("hash").substr(1).toLowerCase() === "sent";
+
+  return options;
+}
+
+function generateMailElement(message) {
+  var mailElement = $(
+    `<a href="/projects/pycnext/mail/view?id=${message.id.main}${
+      options.sent ? "&ack=show" : ""
+    }" class="workspace-style2 list-item-compact"></a>`
+  );
+
+  /*
+  To-do: Mail checkbox
+
+  mailElement.append(
+    `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}" data-hidden>`
+  );
+  */
+
+  if (!options.sent) {
+    mailElement.append(
+      `<div class="workspace-style2 list-item-author">${message.author.name}</div>`
+    );
+  }
+  mailElement.append(
+    `<div class="workspace-style2 list-item-title">${message.title}</div>`
+  );
+  if (options.sent) {
+    mailElement.append(
+      `<div class="workspace-style2 list-item-desc">${message.acknowledged} / ${message.totalRecipients}</div>`
+    );
+  }
+  let [_date, _year] = message.date.split(",");
+  var timestampElement = $(
+    `<div class="workspace-style2 list-item-desc timestamp"><span data-date>${_date}</span><span data-year>, ${_year}</span></div>`
+  );
+
+  /*
+  To-do: Action buttons
+
+  var actionButtons = $('<div class="mail-actions"></div>');
+  actionButtons.append(
+    `<button data-message-id="${message.id.main}" data-action="delete" class="message-btn message-delete-btn"><i class="fa-solid fa-trash"></i></button>`
+  );
+  actionButtons.append(
+    `<button data-message-id="${
+      message.id.main
+    }" data-action="favourite" class="message-btn message-favourite-btn ${
+      message.isImportant ? `fav-enabled` : `fav-disabled`
+    }"><i class="fa-solid fa-star"></i></button>`
+  );
+  timestampElement.append(actionButtons);
+  */
+
+  mailElement.append(timestampElement);
+  return mailElement;
+}
+
 const loadMessages = (pageNum) =>
   new Promise((resolve, reject) => {
-    let urlParams = new URLSearchParams(window.location.search);
-    let search_by = urlParams.get("search-by");
-    let search_val = urlParams.get("search-val");
-    let sort = urlParams.get("sort");
-
-    if ($(location).prop("hash").substr(1).toLowerCase() === "important") {
-      search_by = "useful";
-    }
-
-    options = {};
-    if (search_by) {
-      options["search-by"] = search_by;
-    }
-    if (search_val) {
-      options["search-val"] = search_val;
-    }
-    if (sort) {
-      options["sort"] = sort;
-    }
-    options.sent = $(location).prop("hash").substr(1).toLowerCase() === "sent";
+    let options = readQueryParams();
 
     pyc.getMessages(pageNum, 0, options).then((messages) => {
-      var inboxElement = $("#inbox-mail-list");
+      var inboxElement = $("#inbox");
+
       if (!JSON.parse(messages).length) {
         console.log(messages);
-        $("#inbox-mail-list").append(
+        $("#inbox").append(
           '<div class="flex just-ctr"><div>No email found.</div></div>'
         );
         return reject();
       }
-      for (const message of JSON.parse(messages)) {
-        var mailElement = $(
-          `<a href="/projects/pycnext/mail/view?id=${message.id.main}${
-            options.sent ? "&ack=show" : ""
-          }" class='mail-row flex m-flex-col'></a>`
-        );
-        mailElement.append(
-          `<input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}" data-hidden>`
-        );
-        if (!options.sent) {
-          mailElement.append(
-            `<div class="mail-list-sender overflow-ellipsis">${message.author.name}</div>`
-          );
-        }
-        mailElement.append(
-          `<div class="mail-list-subject overflow-ellipsis">${message.title}</div>`
-        );
-        if (options.sent) {
-          mailElement.append(
-            `<div class="mail-list-sender overflow-ellipsis">${message.acknowledged} / ${message.totalRecipients}</div>`
-          );
-        }
-        let [_date, _year] = message.date.split(",");
-        var timestampElement = $(
-          `<div class="right-text mail-list-timestamp overflow-ellipsis"><span class="mail-date">${_date}</span><span class="mail-year">, ${_year}</span></div>`
-        );
-        /*
-          var actionButtons = $('<div class="mail-actions"></div>');
-          actionButtons.append(
-            `<button data-message-id="${message.id.main}" data-action="delete" class="message-btn message-delete-btn"><i class="fa-solid fa-trash"></i></button>`
-          );
-          actionButtons.append(
-            `<button data-message-id="${
-              message.id.main
-            }" data-action="favourite" class="message-btn message-favourite-btn ${
-              message.isImportant ? `fav-enabled` : `fav-disabled`
-            }"><i class="fa-solid fa-star"></i></button>`
-          );
-          timestampElement.append(actionButtons);
-          */
 
-        mailElement.append(timestampElement);
-        inboxElement.append(mailElement);
+      for (const message of JSON.parse(messages)) {
+        inboxElement.append(generateMailElement(message));
       }
+
       endOfInboxElement = $(
         `<div id="end-of-inbox" data-next-page="${Number(pageNum) + 1}"></div>`
       );
       inboxElement.append(endOfInboxElement);
+
       resolve();
     });
   });

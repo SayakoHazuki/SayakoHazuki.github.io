@@ -1,30 +1,30 @@
 const loadCirculars = (pageNum) =>
   new Promise((resolve, reject) => {
     pyc.getCirculars(pageNum, 0).then((circulars) => {
-      console.log(circulars);
       var container = $("#circulars-list");
-      console.log(container);
+
       if (!circulars.length) {
         container.append(
           '<div class="flex just-ctr"><div>Failed to retrieve circulars.</div></div>'
         );
         return reject();
       }
+
       for (const circular of circulars) {
-        console.log(circular);
         var circularListItem = $(
-          `<a href="/projects/pycnext/admin/circulars?id=${circular.id}" class='circ-row flex m-flex-col'></a>`
+          `<a href="/projects/pycnext/admin/circulars?id=${circular.id}" class="workspace-style2 list-item-compact"></a>`
         );
-        let subjectElement = `<div class="circ-list-subject overflow-ellipsis">${circular.subject}</div>`;
+        let subjectElement = `<div class="workspace-style2 list-item-title">${circular.subject}</div>`;
         let [_date, _year] = circular.date.split(",");
-        var timestampElement = `<div class="right-text circ-list-timestamp overflow-ellipsis" data-circ-date>
-                                <span class="circ-date">${_date}</span><span class="circ-year">, ${_year}</span>
+        var timestampElement = `<div class="workspace-style2 list-item-desc timestamp">
+                                <span data-date>${_date}</span><span data-year></span>, ${_year}</span>
                                 </div>`;
 
         circularListItem.append(subjectElement);
         circularListItem.append(timestampElement);
         container.append(circularListItem);
       }
+
       endOfListElement = $(
         `<div id="end-of-list" data-next-page="${Number(pageNum) + 1}"></div>`
       );

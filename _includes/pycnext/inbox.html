@@ -4,65 +4,50 @@
 <div id="inbox-parent" class="flex contents-parent">
     {% include pycnext/sidebars/mailbox.html %}
 
-    <div id="inbox-workspace-container" class="flex flex-col">
-        <form id="search-form"></form>
-        <div id="search-bar" class="flex">
-            <select form="search-form" name="search-by" id="search-options" class="pycnext-select">
-                <option value="sender">Author</option>
-                <option selected="selected" value="subj">Subject</option>
-                <option value="content">Content</option>
-                <option value="att">File name</option>
-            </select>
-            <div class="vl"></div>
-            <div id="search-input-container" class="flex">
-                <div class="menu-toggler m-show p-show i-container" data-m-no-left-m>
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
-                <button type="submit" class="i-container dark-hover" id="search-submit" data-m-no-right-m>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
+    <div class="flex-col workspace-style2 container">
+        <div class="flex workspace-style2 search-bar">
+            <div class="workspace-style2 select-menu-style1" data-use-fa-font>
+                <select form="search-form" name="search-by" id="search-options" data-use-fa-font>
+                    <option value="&#xf007;">&#xf007; <span data-fa-font-exclusion>Author</span></option>
+                    <option selected="selected" value="&#xf1dc;">&#xf1dc; <span data-fa-font-exclusion>Subject</span>
+                    </option>
+                    <option value="&#xf550;">&#xf550; <span data-fa-font-exclusion>Content</span></option>
+                    <option value="&#xf15b;">&#xf15b; <span data-fa-font-exclusion>File name</span></option>
+                </select>
             </div>
+            <div class="menu-toggler m-show p-show flex search-bar-button" data-m-no-left-m>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <input form="search-form" placeholder="Search..." type="text" name="search-val" id="search-input" />
+            <button type="submit" class="flex workspace-style2 button-style1 search-bar-button" id="search-submit"
+                data-m-no-right-m>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
-        <hr class="divider" />
-
-        <div id="mail-list-actions" class="flex">
-            <div id="mail-selection" class="flex">
-                <button id="multiselect-btn" class="i-container dark-hover">
-                    <i class="fa-solid fa-list-check"></i>
-                </button>
-            </div>
-            <button id="refresh-mail-list" class="i-container dark-hover">
+        <div class="flex workspace-style2 action-row">
+            <button id="filter-btn" class="i-container button-style2">
+                <i class="fa-solid fa-filter"></i>
+                Filters
+                <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <button id="refresh-btn" class="i-container button-style1 self-align-end" data-no-i-margin>
                 <i class="fa-solid fa-rotate-right"></i>
             </button>
-            <button id="filter-btn" class="i-container dark-hover">
-                <i class="fa-solid fa-filter"></i>
-            </button>
         </div>
-        <hr class="divider" />
 
-        <div id="inbox-mail-list-container">
-            <div id="inbox-mail-list" class="flex flex-col">
-                <div class="loader-container" data-padding="true">
-                    <div class="loader-ring">
-                        <div data-loader-div1></div>
-                        <div data-loader-div2></div>
-                        <div data-loader-div3></div>
-                        <div data-loader-div4></div>
-                    </div>
+        <div id="inbox" class="flex-col workspace-style2 list-container">
+
+            <div class="loader-container" data-padding="true">
+                <div class="loader-ring">
+                    <div data-loader-div1></div>
+                    <div data-loader-div2></div>
+                    <div data-loader-div3></div>
+                    <div data-loader-div4></div>
                 </div>
-
-                <!---
-                    <a href="/projects/pycnext/mail/view?id=${message.id.main}" class='mail-row flex m-flex-col'>
-                        <input class="mail-checkbox" type="checkbox" name="check-mail" data-message-id="${message.id.main}">
-                        <div class="mail-list-sender overflow-ellipsis">${message.author.name}</div>
-                        <div class="mail-list-subject overflow-ellipsis">${message.title}</div>
-                        <div class="right-text mail-list-timestamp overflow-ellipsis"><span class="mail-date">${_date}</span><span class="mail-year">, ${_year}</span></div>
-                    </a>
-
-                    <div id="end-of-inbox" data-next-page="${Number(pageNum) + 1}"></div>
-                --->
             </div>
+
         </div>
     </div>
+</div>
+
 </div>
