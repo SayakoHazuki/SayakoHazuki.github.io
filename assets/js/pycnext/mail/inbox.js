@@ -1,7 +1,7 @@
 function readQueryParams() {
   let urlParams = new URLSearchParams(window.location.search);
-  let search_by = urlParams.get("search-by");
-  let search_val = urlParams.get("search-val");
+  let search_by = urlParams.get("search-by").toLowerCase();
+  let search_val = urlParams.get("search-val").toLowerCase();
   let sort = urlParams.get("sort");
 
   if ($(location).prop("hash").substr(1).toLowerCase() === "important") {
@@ -10,7 +10,20 @@ function readQueryParams() {
 
   options = {};
   if (search_by) {
-    options["search-by"] = search_by;
+    switch (search_by) {
+      case "author":
+        options["search-by"] = "sender";
+        break;
+      case "title":
+        options["search-by"] = "subj";
+        break;
+      case "file":
+        options["search-by"] = "att";
+        break;
+      case "content":
+        options["search-by"] = "content";
+        break;
+    }
   }
   if (search_val) {
     options["search-val"] = search_val;
@@ -20,6 +33,17 @@ function readQueryParams() {
   }
   options.sent = $(location).prop("hash").substr(1).toLowerCase() === "sent";
 
+  /* convert search_by to camelcase */
+  if (options["search-by"]) {
+    $(
+      ".select-items [data-value='" +
+        search_by.charAt(0).toUpperCase() +
+        search_by.slice(1) +
+        "']"
+    ).click();
+  }
+
+  console.log(options);
   return options;
 }
 
