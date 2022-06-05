@@ -594,7 +594,7 @@ hr.divider[data-no-margin] {
     margin: auto 4px auto 0;
   }
 
-  .workspace-style1.buttons-row .i-container + .i-container {
+  .workspace-style1.buttons-row .i-container + .i-container:not(:last-child) {
     margin-left: -4px;
   }
 }
@@ -730,8 +730,8 @@ hr.divider[data-no-margin] {
     background-color: var(--bg-secondary-color);
     flex: 0 0 3rem;
     border-radius: 1.5rem;
-    margin: 1.4em 0.7em 0.7em 0.7em;
-    width: calc(100% - 1.4em);
+    margin: 0.5em 0 0 0;
+    width: 100%;
   }
 }
 
@@ -743,7 +743,7 @@ hr.divider[data-no-margin] {
 }
 
 @media screen and (max-width: 748px) {
-  .workspace-style2.action-row .i-container {
+  .workspace-style2.action-row .i-container:not([data-no-i-margin]) {
     margin: auto 4px;
   }
 
@@ -751,7 +751,7 @@ hr.divider[data-no-margin] {
     margin: auto 4px auto 0;
   }
 
-  .workspace-style2.action-row .i-container + .i-container {
+  .workspace-style2.action-row .i-container + .i-container:not(:last-child) {
     margin-left: -4px;
   }
 }
@@ -833,6 +833,7 @@ hr.divider[data-no-margin] {
 .workspace-style2.list-container {
   flex: 0 1 100%;
   padding-bottom: 30vh;
+  overflow-y: auto;
 }
 
 .workspace-style2.list-item-compact {
@@ -887,6 +888,13 @@ a.list-item-compact:hover {
   .workspace-style2.list-container .list-item-compact {
     flex-direction: column;
   }
+
+  .workspace-style2.list-item-author,
+  .workspace-style2.list-item-title,
+  .workspace-style2.list-item-date,
+  .workspace-style2.list-item-author-desc {
+    flex: 0 0 fit-content;
+  }
 }
 
 /* Workspace: Style2 > Selection Menu */
@@ -910,7 +918,7 @@ a.list-item-compact:hover {
   overflow: hidden;
   padding-right: 19px;
   padding-left: 5px;
-  padding-top: 0.375em;
+  padding-top: calc(1em - 9px);
   font-size: 1em;
   height: 100%;
 }
@@ -918,7 +926,7 @@ a.list-item-compact:hover {
 .workspace-style2.select-menu-style1 .select-selected:after {
   position: absolute;
   content: "";
-  top: calc(0.75em - 1px);
+  top: calc(1em - 3px);
   right: 5px;
   width: 0;
   height: 0;
@@ -929,7 +937,22 @@ a.list-item-compact:hover {
 .workspace-style2.select-menu-style1
   .select-selected.select-arrow-active:after {
   border-color: transparent transparent var(--bg-dark-color) transparent;
-  top: calc(0.75em - 8px);
+  top: calc(1em - 9px);
+}
+
+@media screen and (max-width: 748px) {
+  .workspace-style2.select-menu-style1 .select-selected {
+    padding-top: calc(1.25rem - 9px);
+  }
+
+  .workspace-style2.select-menu-style1 .select-selected:after {
+    top: calc(1.25rem - 3px);
+  }
+
+  .workspace-style2.select-menu-style1
+    .select-selected.select-arrow-active:after {
+    top: calc(1.25rem - 9px);
+  }
 }
 
 .workspace-style2.select-menu-style1 .select-items div,

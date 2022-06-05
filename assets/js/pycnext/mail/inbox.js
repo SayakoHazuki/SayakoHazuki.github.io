@@ -1,7 +1,12 @@
 function readQueryParams() {
   let urlParams = new URLSearchParams(window.location.search);
-  let search_by = urlParams.get("search-by").toLowerCase();
-  let search_val = urlParams.get("search-val").toLowerCase();
+  let search_by, search_val;
+  if (urlParams.has("search-by")) {
+    search_by = urlParams.get("search-by").toLowerCase();
+  }
+  if (urlParams.has("search-val")) {
+    search_val = urlParams.get("search-val").toLowerCase();
+  }
   let sort = urlParams.get("sort");
 
   if ($(location).prop("hash").substr(1).toLowerCase() === "important") {
@@ -43,7 +48,6 @@ function readQueryParams() {
     ).click();
   }
 
-  console.log(options);
   return options;
 }
 
@@ -109,7 +113,6 @@ const loadMessages = (pageNum) =>
       var inboxElement = $("#inbox");
 
       if (!JSON.parse(messages).length) {
-        console.log(messages);
         $("#inbox").append(
           '<div class="flex just-ctr"><div>No email found.</div></div>'
         );
@@ -150,12 +153,10 @@ function loadNextPage() {
       let nextPageNum = Number($("#end-of-inbox").attr("data-next-page") ?? "");
       $("#end-of-inbox").remove();
       if (!$(".loader-container").length) {
-        console.log($("#end-of-inbox").attr("data-next-page"));
         if (isNaN(nextPageNum)) return;
         $("#inbox-mail-list").append(
           '<div class="loader-container" data-padding="true"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
         );
-        console.log(nextPageNum);
         loadMessages(nextPageNum).then(function () {
           $(".loader-container").each(function () {
             $(this).remove();
