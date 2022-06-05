@@ -63,7 +63,18 @@ class PycClient {
                 this.getMessages(page, 1);
               },
               () => {
-                window.location.href = "/projects/pycnext/login";
+                reject();
+                if ($(".list-container").length) {
+                  $(".list-container").html(
+                    `<div style="margin:10px auto">Session Expired. You will be redirected to login page.</div>`
+                  );
+                }
+
+                setTimeout(() => {
+                  window.location.href = `/projects/pycnext/login?redirect_to=${encodeURIComponent(
+                    window.location.href.split("projects/pycnext/")[1]
+                  )}`;
+                }, 2000);
               }
             );
           }
@@ -93,7 +104,18 @@ class PycClient {
                 this.getMessage(id, 1);
               },
               () => {
-                window.location.href = "/projects/pycnext/login";
+                reject();
+                if ($(".list-container").length) {
+                  $(".list-container").html(
+                    `<div style="margin:10px auto">Session Expired. You will be redirected to login page.</div>`
+                  );
+                }
+
+                setTimeout(() => {
+                  window.location.href = `/projects/pycnext/login?redirect_to=${encodeURIComponent(
+                    window.location.href.split("projects/pycnext/")[1]
+                  )}`;
+                }, 2000);
               }
             );
           }
@@ -123,7 +145,17 @@ class PycClient {
                 this.getCirculars(page, 1);
               },
               () => {
-                window.location.href = "/projects/pycnext/login";
+                reject();
+                if ($(".list-container").length) {
+                  $(".list-container").html(
+                    `<div style="margin:10px auto">Session Expired. You will be redirected to login page.</div>`
+                  );
+                }
+                setTimeout(() => {
+                  window.location.href = `/projects/pycnext/login?redirect_to=${encodeURIComponent(
+                    window.location.href.split("projects/pycnext/")[1]
+                  )}`;
+                }, 2000);
               }
             );
           }
@@ -153,7 +185,17 @@ class PycClient {
                 this.getCirculars(page, 1);
               },
               () => {
-                window.location.href = "/projects/pycnext/login";
+                reject();
+                if ($(".list-container").length) {
+                  $(".list-container").html(
+                    `<div style="margin:10px auto">Session Expired. You will be redirected to login page.</div>`
+                  );
+                }
+                setTimeout(() => {
+                  window.location.href = `/projects/pycnext/login?redirect_to=${encodeURIComponent(
+                    window.location.href.split("projects/pycnext/")[1]
+                  )}`;
+                }, 2000);
               }
             );
           }

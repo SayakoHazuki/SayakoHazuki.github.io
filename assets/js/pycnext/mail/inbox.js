@@ -154,7 +154,7 @@ function loadNextPage() {
       $("#end-of-inbox").remove();
       if (!$(".loader-container").length) {
         if (isNaN(nextPageNum)) return;
-        $("#inbox-mail-list").append(
+        $("#inbox").append(
           '<div class="loader-container" data-padding="true"><div class="loader-ring"><div data-loader-div1></div><div data-loader-div2></div><div data-loader-div3></div><div data-loader-div4></div></div></div>'
         );
         loadMessages(nextPageNum).then(function () {
@@ -229,7 +229,7 @@ async function init() {
     }
   );
 
-  $("#inbox-mail-list-container").on("resize scroll", loadNextPage);
+  $("#inbox").on("resize scroll", loadNextPage);
 }
 
 window.onload = init;
